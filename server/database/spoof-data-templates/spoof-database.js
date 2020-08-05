@@ -1,6 +1,6 @@
 var db = require('./database.js');
 var faker = require('faker');
-var tags = require('./spoof-data-templates/tags.json');
+var tags = require('./tags.json');
 
 
 function getRandomInt(min, max) {
