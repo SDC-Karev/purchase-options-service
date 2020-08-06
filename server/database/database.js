@@ -5,7 +5,7 @@ var db = mysql.createPool({
   'user': 'node',
   'password': 'pw',
   'database': 'steam'
-})
+});
 
 var query = (query, queryArgs) => {
   return new Promise((resolve, reject) => {

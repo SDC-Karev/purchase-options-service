@@ -1,10 +1,9 @@
 var { _getGameById, _getTagsByGameId, _getBundleByGameID, _getGamesFromBundleID } = require('./queries.js')
 
-var gameByIdAPI = (id) => {
+var gameById = (id) => {
   var gameData;
   return _getGameById(id)
     .then((game) => {
-      console.log(game)
       gameData = game;
       return _getTagsByGameId(id);
     })
@@ -14,10 +13,10 @@ var gameByIdAPI = (id) => {
     });
 }
 
-var bundleByGameIdAPI = (id) => {
+var bundleByGameId = (id) => {
   return _getBundleByGameID(id) // get bundle data
     .then((res) => {
-      data = res.map((bundle) => {
+      var data = res.map((bundle) => {
         return _getGamesFromBundleID(bundle.bundle_id)
           .then((res) => {
             bundle.games = res;
@@ -46,8 +45,8 @@ var bundleByGameIdAPI = (id) => {
 }
 
 module.exports = {
-  bundleByGameIdAPI,
-  gameByIdAPI
+  bundleByGameId,
+  gameById
 };
 
 

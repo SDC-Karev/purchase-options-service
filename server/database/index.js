@@ -1,8 +1,10 @@
 var { query } = require('./database.js');
-var { bundleByGameIdAPI, gameByIdAPI } = require('./api.js');
+var { bundleByGameId, gameById } = require('./api.js');
+var basicQueries = require('./queries');
 
 module.exports = {
   query,
-  bundleByGameIdAPI,
-  gameByIdAPI
+  basicQueries,
+  bundleByGameId,
+  gameById
 }
