@@ -22,7 +22,13 @@ module.exports = {
         options: {
           presets: ['es2015', 'react']
         }
-      }
+      },
+      {
+        test: /\.css?$/i,
+        use: [
+          'css-loader'
+        ]
+      },
     ]
   }
 }
