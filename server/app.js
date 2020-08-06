@@ -12,10 +12,9 @@ app.use(express.static(__dirname + '/../public'));
 
 app.get('/api/gameById/:id', (req, res) => {
   var id = req.params.id;
-  console.log(id);
-  console.log(db);
   db.gameById(id)
     .then(data => {
+      console.log(data)
       res.status(200).json(data[0]);
     })
     .catch(err => {

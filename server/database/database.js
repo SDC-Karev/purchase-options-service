@@ -4,7 +4,8 @@ var db = mysql.createPool({
   'connectionLimit': 10,
   'user': 'node',
   'password': 'pw',
-  'database': 'steam'
+  'database': 'steam',
+  'host': 'localhost'
 });
 
 var query = (query, queryArgs) => {
