@@ -7,7 +7,7 @@ var _getGameById = (id) => {
               ON g.sale_id = s.sale_id
             INNER JOIN developers d
               ON g.dev_id = d.dev_id
-            WHERE g.game_id = ?;`
+            WHERE g.game_id = ?;`;
 
   return db.query(q, [id]);
 }
@@ -19,7 +19,7 @@ var _getBundleByGameID = (id) => {
               ON b.sale_id = s.sale_id
             INNER JOIN games_bundles gb
               ON gb.bundle_id = b.bundle_id
-            WHERE gb.game_id = ?;`
+            WHERE gb.game_id = ?;`;
 
   return db.query(q, [id]);
 }
@@ -31,7 +31,7 @@ var _getGamesFromBundleID = (id) => {
               ON g.dev_id = d.dev_id
             INNER JOIN games_bundles gb
               ON gb.game_id = g.game_id
-            WHERE gb.bundle_id = ?`;
+            WHERE gb.bundle_id = ?`;;
 
   return db.query(q, [id]);
 }
@@ -41,7 +41,7 @@ var _getTagsByGameId = (id) => {
             FROM tags t
             INNER JOIN tags_games tg
               ON tg.tag_id = t.tag_id
-            WHERE tg.game_id = ?`;
+            WHERE tg.game_id = ?;`;
 
   return db.query(q, [id])
 }
