@@ -14,7 +14,6 @@ app.get('/api/gameById/:id', (req, res) => {
   var id = req.params.id;
   db.gameById(id)
     .then(data => {
-      console.log(data)
       res.status(200).json(data[0]);
     })
     .catch(err => {
