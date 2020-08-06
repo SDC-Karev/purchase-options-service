@@ -1,0 +1,38 @@
+{
+  "name": "purchase-options",
+  "version": "1.0.0",
+  "description": "Purchasing options component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrr47-FEC-Bailey/purchase-options.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrr47-FEC-Bailey/purchase-options/issues"
+  },
+  "homepage": "https://github.com/hrr47-FEC-Bailey/purchase-options#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "jquery": "^3.5.1",
+    "mysql": "^2.18.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "chai": "^4.2.0",
+    "nodemon": "^2.0.4",
+    "webpack": "^2.2.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
