@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from '../style.css';
 
-
-var PurchaseBundle = (props) => (
+const PurchaseBundle = (props) => (
   <div className={styles.game_purchase_wrapper}>
     <h1 className={styles.h1}>
       Bundle Title

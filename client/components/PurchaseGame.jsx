@@ -1,17 +1,15 @@
 import React from 'react';
 import styles from '../style.css';
 
-
-var PurchaseGame = (props) => (
+const PurchaseGame = (props) => (
   <div className={styles.game_purchase_wrapper}>
     <div className="game_purchase_banner">
-      <h1 >
-       Game Title
+      <h1>
+        Game Title
       </h1>
       <p className={styles.game_purchase_subtitle}>
         Promotion details promotion date
       </p>
-      <span className="plaforms_icon"></span>
     </div>
     <div className={styles.game_purchase_data}>
       <div className={styles.discount_pct_amount}>-50%</div>
@@ -26,5 +24,4 @@ var PurchaseGame = (props) => (
   </div>
 );
 
-console.log(styles)
 export default PurchaseGame;
