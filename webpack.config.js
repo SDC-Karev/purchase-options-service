@@ -18,7 +18,6 @@ module.exports = {
         ],
         loader: 'babel-loader',
         options: {
-<<<<<<< HEAD
           presets: ['@babel/preset-env', '@babel/preset-react'],
         },
       },
@@ -37,17 +36,3 @@ module.exports = {
     ],
   },
 };
-=======
-          presets: ['es2015', 'react']
-        }
-      },
-      {
-        test: /\.css?$/i,
-        use: [
-          'css-loader'
-        ]
-      },
-    ]
-  }
-}
->>>>>>> 2be660cd7c93eb5543cadd518624bbdb95238f99
