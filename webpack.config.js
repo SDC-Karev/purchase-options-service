@@ -18,14 +18,6 @@ module.exports = {
         ],
         loader: 'babel-loader',
         options: {
-<<<<<<< Updated upstream
-          presets: ['es2015', 'react']
-        }
-      }
-    ]
-  }
-}
-=======
           presets: ['@babel/preset-env', '@babel/preset-react'],
         },
       },
@@ -44,4 +36,3 @@ module.exports = {
     ],
   },
 };
->>>>>>> Stashed changes
