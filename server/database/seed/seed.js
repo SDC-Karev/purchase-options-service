@@ -64,7 +64,7 @@ Promise.all(m)
         gb.push(db.query('INSERT INTO games_bundles (game_id, bundle_id) VALUES (?, ?)', [game, i]));
       })
     }
-    return Promise.all(gb)
+    return Promise.all(gb);
   })
   .then(() => {
     // add tags to the games
@@ -80,7 +80,7 @@ Promise.all(m)
         gt.push(db.query('INSERT INTO tags_games (game_id, tag_id) VALUES (?, ?)', [i, tag]));
       })
     }
-    return Promise.all(gt)
+    return Promise.all(gt);
   })
   .then(() => {
     console.log('all done')

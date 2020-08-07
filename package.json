@@ -4,7 +4,9 @@
   "description": "Purchasing options component",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "seed": "node ./server/database/seed/seed.js",
+    "start-dev": "nodemon ./server/app.js",
+    "build-dev": "webpack -d --watch"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,8 @@
     "jquery": "^3.5.1",
     "mysql": "^2.18.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
