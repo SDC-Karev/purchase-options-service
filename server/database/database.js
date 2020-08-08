@@ -1,22 +1,22 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
-var db = mysql.createPool({
-  'connectionLimit': 10,
-  'user': 'node',
-  'password': 'pw',
-  'database': 'steam',
-  'host': 'localhost'
+const db = mysql.createPool({
+  connectionLimit: 10,
+  user: 'node',
+  password: 'pw',
+  database: 'steam',
+  host: 'localhost',
 });
 
-var query = (query, queryArgs) => {
-  return new Promise((resolve, reject) => {
-    db.query(query, queryArgs, (err, result) => {
+const query = (queryString, queryArgs) => (
+  new Promise((resolve, reject) => {
+    db.query(queryString, queryArgs, (err, result) => {
       if (err) {
         reject(err.message);
       }
       resolve(result);
-    })
+    });
   })
-}
+);
 
 module.exports.query = query;
