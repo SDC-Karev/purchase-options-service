@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   fetchGameData() {
-    const gameId = 3;
+    const gameId = 5;
     axios.get(`/api/gameById/${gameId}`)
       .then((res) => {
         this.setState({

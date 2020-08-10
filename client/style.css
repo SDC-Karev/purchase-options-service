@@ -52,7 +52,6 @@
   font-size: 25px;
 }
 
-
 .discount_pct_amount {
   color: #a4d007;
   background: #4c6b22;
@@ -109,7 +108,7 @@
   background: linear-gradient( to right, #6fa720 5%, #588a1b 95%);
   border-radius: 2px;
   display: block;
-  padding: 8px 15px 5px 15px;
+  padding: 7px 15px 6px 15px;
   font-size: 15px;
 }
 
@@ -121,14 +120,11 @@
   color: #8f98a0;
 }
 
-
-
 .bundle_contents {
   padding: 6px;
   margin: 8px -6px 0 -6px;
   background: rgba(0,0,0,0.5);
 }
-
 
 a {
   padding: 0;
