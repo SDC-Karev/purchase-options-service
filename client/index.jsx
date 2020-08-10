@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import ReactDOM from 'react-dom';
 import styles from './style.css';
 
@@ -10,18 +11,39 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      game_id: null,
       game: {},
       bundles: [],
     };
   }
 
+  componentDidMount() {
+    this.fetchGameData();
+    console.log(this.state);
+  }
+
+  fetchGameData() {
+    const gameId = 3;
+    axios.get(`/api/gameById/${gameId}`)
+      .then((res) => {
+        this.setState({
+          game: res.data,
+        });
+      })
+      .then(() => axios.get(`/api/bundleByGameId/${gameId}`))
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          bundles: res.data,
+        });
+      });
+  }
+
   render() {
+    const { game, bundles } = this.state;
     return (
       <div className={styles.purchase_options_wrapper}>
-        <PurchaseGame />
-        {/* this.state.bundles.map((bundle) => <PurchaseBundle bundle={bundle} /> */}
-        <PurchaseBundle />
+        <PurchaseGame game={game} />
+        {bundles.map((bundle) => <PurchaseBundle key={bundle.bundle_id} bundle={bundle} />)}
       </div>
     );
   }

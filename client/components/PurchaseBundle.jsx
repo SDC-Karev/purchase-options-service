@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from '../style.css';
 
-const PurchaseBundle = (props) => (
+const PurchaseBundle = ({ bundle }) => (
   <div className={styles.game_purchase_wrapper}>
     <div className={styles.game_purchase_block}>
       <h1 className={styles.h1}>
-        Bundle Title
+        {bundle.bundle_name}
       </h1>
       <p className={styles.bundle_info}>Promotion details promotion date</p>
       <div className={styles.bundle_contents}>
@@ -26,10 +26,10 @@ const PurchaseBundle = (props) => (
       </div>
       <div className={styles.game_purchase}>
         <div className={styles.game_purchase_data}>
-          <div className={styles.discount_pct_amount}>-50%</div>
+          <div className={styles.discount_pct_amount}>{`${bundle.sale_amount}%`}</div>
           <div className={styles.prices}>
-            <div className={styles.original_price}>$100.00</div>
-            <div className={styles.discounted_price}>$50.00</div>
+            <div className={styles.original_price}>{`\$${(bundle.bundle_price/100).toFixed(2)}`}</div>
+            <div className={styles.discounted_price}>{`\$${(bundle.bundle_price * (1 + bundle.sale_amount/100)).toFixed(2)}`}</div>
           </div>
           <div className={styles.green_btn}>
             <a className="btn_purchase" href="#"><span>Add To Cart</span></a>
