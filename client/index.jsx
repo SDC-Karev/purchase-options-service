@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './style.css';
 
-import PurchaseGame from './components/PurchaseGame';
-import PurchaseBundle from './components/PurchaseBundle';
+import PurchaseGame from './components/PurchaseGame.jsx';
+import PurchaseBundle from './components/PurchaseBundle.jsx';
 
 class App extends React.Component {
   constructor(props) {

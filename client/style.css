@@ -3,77 +3,132 @@
 }
 
 .game_purchase_wrapper {
+  margin-bottom: 28px;
+}
+
+.game_purchase_block {
   background: linear-gradient( -60deg, rgba(226,244,255,0.3) 5%,rgba(84, 107, 115, 0.3) 95%);
   padding: 16px;
   padding-bottom: 26px;
-  margin-bottom: 28px;
   border-radius: 4px;
+  position: relative;
 }
 
-.game_purchase_wrapper h1 {
+.game_purchase_block h1 {
   color: #fff;
   font-family: "Motiva Sans", Sans-serif;
   font-size: 21px;
-}
-
-.game_purchase {
-
-}
-
-.game_purchase_data {
-  background: #000;
-  display: inline-block;
-  height: 32px;
-  border-radius: 2px;
 }
 
 .game_purchase_subtitle {
   color: #7cb8e4;
 }
 
+.game_purchase {
+  position: absolute;
+  right: 16px;
+  bottom: -17px;
+  left: 16px;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.game_purchase_data {
+  background: #000;
+  margin-left: 2px;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  padding: 2px 2.75px;
+}
+
+.game_purchase_data .discount_pct_amount{
+  display: inline-block;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  padding: 0 6px;
+  overflow: hidden;
+  font-size: 25px;
+}
+
+
 .discount_pct_amount {
   color: #a4d007;
   background: #4c6b22;
-  font-size: 25px;
   display: inline-block;
-  text-align: center;
-  border-radius: 2px;
-  padding: 2px 2px;
+  vertical-align: middle;
 }
 
-.prices {
+.game_purchase_data .prices {
   display: inline-block;
+  position: relative;
+  vertical-align: top;
+  height: 32px;
+  vertical-align: middle;
 }
 
 .original_price {
+  position: absolute;
   color:#626366;
   text-decoration: line-through;
+  left: auto;
+  right: 6px;
+  top: 2px;
   font-size: 11px;
 }
 
 .discounted_price {
   color: #acdbf5;
   font-size: 15px;
+  padding-left: 8px;
+  padding-top: 13px;
+  padding-right: 6px;
 }
 
 .green_btn  {
-  background: #6fa720;
+  margin-left: 2px;
   display: inline-block;
   height: 32px;
-  text-align: center;
-  position: absolute;
+  vertical-align: top;
+}
+
+.green_btn a {
   border-radius: 2px;
+  border: none;
+  padding: 1px;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none !important;
+  color: #d2efa9;
+  background: transparent;
+  text-shadow: 1px 1px 0px rgba( 0, 0, 0, 0.3 );
 }
 
 .green_btn span {
-  color: #d2efa9;
+  background: linear-gradient( to right, #6fa720 5%, #588a1b 95%);
+  border-radius: 2px;
+  display: block;
+  padding: 8px 15px 5px 15px;
   font-size: 15px;
-  text-shadow: 1px 1px 0px rgba( 0, 0, 0, 0.3 );
+}
+
+.green_btn:hover span{
+  background: linear-gradient( to right, #8ed629 5%, #6aa621 95%);
 }
 
 .bundle_info {
   color: #8f98a0;
 }
+
+
+
+.bundle_contents {
+  padding: 6px;
+  margin: 8px -6px 0 -6px;
+  background: rgba(0,0,0,0.5);
+}
+
 
 a {
   padding: 0;
