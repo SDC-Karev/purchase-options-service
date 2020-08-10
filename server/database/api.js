@@ -41,10 +41,11 @@ const bundleByGameId = (id) => (
               return Promise.resolve(g);
             })
         ));
+        const b = bundle;
         return Promise.all(games)
           .then((gamesResult) => {
-            bs.games = gamesResult;
-            return Promise.resolve(bs);
+            b.games = gamesResult;
+            return Promise.resolve(b);
           });
       });
       return Promise.all(bs);
