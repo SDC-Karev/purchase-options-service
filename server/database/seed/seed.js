@@ -19,7 +19,7 @@ Promise.all(m)
       const sale = (getRandomInt(-100, 100) >= 0) ? 0 : getRandomInt(-99, -1);
       return db.query('INSERT INTO sales (sale_name, sale_amount, sale_start_date, sale_end_date)VALUES (?, ?, ?, ?)', [`${faker.hacker.adjective()} ${faker.hacker.noun()} Sale`, sale, faker.date.past(), faker.date.future()]);
     });
-    return Promise.resolve(s)
+    return Promise.resolve(s);
   })
   .then(() => {
     // Create 30 Developers
@@ -46,7 +46,7 @@ Promise.all(m)
   .then(() => {
     // Create 20 bundles
     const b = [...Array(20)].map(() => (
-      db.query('INSERT INTO bundles (bundle_name, bundle_price, sale_id) VALUES (?, ?, ?);', [`${faker.commerce.productName()} Bundle`, faker.commerce.price()  * 100, getRandomInt(1, 50)])
+      db.query('INSERT INTO bundles (bundle_name, bundle_price, sale_id) VALUES (?, ?, ?);', [`${faker.commerce.productName()} Bundle`, faker.commerce.price() * 100, getRandomInt(1, 50)])
     ));
     return Promise.all(b);
   })
