@@ -39,7 +39,7 @@
   vertical-align: middle;
   display: inline-block;
   position: relative;
-  padding: 2px 2.75px;
+  padding: 2px 2.75px 2px 2.75px;
 }
 
 .game_purchase_data .discount_pct_amount{
@@ -124,6 +124,18 @@
   padding: 6px;
   margin: 8px -6px 0 -6px;
   background: rgba(0,0,0,0.5);
+}
+
+.bundle_item {
+  position: inline-block;
+  cursor: pointer;
+}
+
+.bundle_img {
+  height: 45px;
+  width: 120px;
+  border-color: #fff;
+  border-size: .5px;
 }
 
 a {

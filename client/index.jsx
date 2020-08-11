@@ -18,11 +18,10 @@ class App extends React.Component {
 
   componentDidMount() {
     this.fetchGameData();
-    console.log(this.state);
   }
 
   fetchGameData() {
-    const gameId = 5;
+    const gameId = 3;
     axios.get(`/api/gameById/${gameId}`)
       .then((res) => {
         this.setState({

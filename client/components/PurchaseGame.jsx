@@ -18,7 +18,7 @@ const PurchaseGame = ({ game }) => (
           <div className={styles.discount_pct_amount}>{`${game.sale_amount}%`}</div>
           <div className={styles.prices}>
             <div className={styles.original_price}>{`\$${(game.game_price/100).toFixed(2)}`}</div>
-            <div className={styles.discounted_price}>{`\$${(game.game_price * (1 + game.sale_amount/100)).toFixed(2)}`}</div>
+            <div className={styles.discounted_price}>{`\$${(game.game_price/100 * (1 + game.sale_amount/100)).toFixed(2)}`}</div>
           </div>
           <div className={styles.green_btn}>
             <a className="btn_purchase" href="#"><span>Add To Cart</span></a>
