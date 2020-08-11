@@ -24,12 +24,8 @@
     "mysql": "^2.18.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-<<<<<<< HEAD
-    "react-dom": "^16.13.1"
-=======
     "react-dom": "^16.13.1",
     "faker": "^4.1.0"
->>>>>>> d96eb3363dcb3d68a76b985fead868ae77ef0ce9
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",

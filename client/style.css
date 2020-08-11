@@ -1,10 +1,24 @@
-.game_options_wrapper {
+body .game_info_wrapper {
+  width: 940px;
   margin: 4px;
 }
 
 .game_purchase_wrapper {
   margin-bottom: 28px;
 }
+
+.left_column {
+  width: 616px;
+  float: left;
+}
+
+.right_column {
+  width: 308px;
+  float: right;
+  margin-left: 14px;
+  background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%);
+}
+
 
 .game_purchase_block {
   background: linear-gradient( -60deg, rgba(226,244,255,0.3) 5%,rgba(84, 107, 115, 0.3) 95%);
@@ -67,21 +81,29 @@
   vertical-align: middle;
 }
 
+.discounted_price {
+  color: #acdbf5;
+  font-size: 15px;
+  padding-left: 8px;
+  padding-top: 13px;
+  padding-right: 6px;
+}
+
 .original_price {
+  text-decoration: line-through;
   position: absolute;
   color:#626366;
-  text-decoration: line-through;
   left: auto;
   right: 6px;
   top: 2px;
   font-size: 11px;
 }
 
-.discounted_price {
-  color: #acdbf5;
-  font-size: 15px;
+.nosale_original_price {
+  color: #fff;
+  font-size: 13px;
   padding-left: 8px;
-  padding-top: 13px;
+  padding-top: 9px;
   padding-right: 6px;
 }
 
@@ -121,9 +143,12 @@
 }
 
 .bundle_contents {
+  position: relative;
   padding: 6px;
   margin: 8px -6px 0 -6px;
   background: rgba(0,0,0,0.5);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .bundle_item {
@@ -135,8 +160,9 @@
   height: 45px;
   width: 120px;
   border-color: #fff;
-  border-size: .5px;
+  border-width: .5px;
 }
+
 
 a {
   padding: 0;

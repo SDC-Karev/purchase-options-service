@@ -30,7 +30,6 @@ class App extends React.Component {
       })
       .then(() => axios.get(`/api/bundleByGameId/${gameId}`))
       .then((res) => {
-        console.log(res.data);
         this.setState({
           bundles: res.data,
         });
@@ -40,10 +39,16 @@ class App extends React.Component {
   render() {
     const { game, bundles } = this.state;
     return (
-      <div className={styles.purchase_options_wrapper}>
-        <PurchaseGame game={game} />
-        {bundles.map((bundle) => <PurchaseBundle key={bundle.bundle_id} bundle={bundle} />)}
+      <div className={styles.game_info_wrapper}>
+        <div className={styles.left_column}>
+          <PurchaseGame game={game} />
+          {bundles.map((bundle) => <PurchaseBundle key={bundle.bundle_id} bundle={bundle} />)}
+        </div>
+        <div className={styles.right_column}>
+          <img src="#" />
+        </div>
       </div>
+
     );
   }
 }
