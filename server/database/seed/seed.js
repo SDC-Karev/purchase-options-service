@@ -16,13 +16,10 @@ Promise.all(m)
   .then(() => {
     // create 50 sales
     const s = [...Array(50)].map(() => {
-      const sale = (getRandomInt(-100, 100) >= 0) ? 0 : getRandomInt(-99, 0);
+      const sale = (getRandomInt(-100, 100) >= 0) ? 0 : getRandomInt(-99, -1);
       return db.query('INSERT INTO sales (sale_name, sale_amount, sale_start_date, sale_end_date)VALUES (?, ?, ?, ?)', [`${faker.hacker.adjective()} ${faker.hacker.noun()} Sale`, sale, faker.date.past(), faker.date.future()]);
     });
-    return Promise.resolve(s)
-      .catch((err) => {
-        console.log(err.message);
-      });
+    return Promise.resolve(s);
   })
   .then(() => {
     // Create 30 Developers
@@ -37,7 +34,7 @@ Promise.all(m)
       db.query('INSERT IGNORE INTO games (game_name, game_price, game_release_date, dev_id, game_banner, sale_id) VALUES (?, ?, ?, ?, ?, ?)',
         [
           faker.commerce.productName(),
-          faker.commerce.price(),
+          faker.commerce.price() * 100,
           faker.date.past(),
           getRandomInt(1, 30),
           faker.image.imageUrl(),
@@ -49,7 +46,7 @@ Promise.all(m)
   .then(() => {
     // Create 20 bundles
     const b = [...Array(20)].map(() => (
-      db.query('INSERT INTO bundles (bundle_name, bundle_price, sale_id) VALUES (?, ?, ?);', [`${faker.commerce.productName()} Bundle`, faker.commerce.price(), getRandomInt(1, 50)])
+      db.query('INSERT INTO bundles (bundle_name, bundle_price, sale_id) VALUES (?, ?, ?);', [`${faker.commerce.productName()} Bundle`, faker.commerce.price() * 100, getRandomInt(1, 50)])
     ));
     return Promise.all(b);
   })
@@ -84,7 +81,4 @@ Promise.all(m)
       });
     }
     return Promise.all(gt);
-  })
-  .then(() => {
-    console.log('all done');
   });

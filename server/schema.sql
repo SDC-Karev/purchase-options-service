@@ -5,7 +5,7 @@ USE steam;
 CREATE TABLE games (
   game_id int not null auto_increment,
   game_name varchar(255) not null,
-  game_price decimal(10, 2) not null,
+  game_price int not null,
   game_banner varchar(255) not null,
   game_release_date date not null,
   dev_id int not null,
@@ -32,7 +32,7 @@ CREATE TABLE sales (
 CREATE TABLE bundles (
   bundle_id int not null auto_increment,
   bundle_name varchar(255) not null,
-  bundle_price decimal(10, 2) not null,
+  bundle_price int not null,
   sale_id int default 1,
   primary key (bundle_id)
 );
