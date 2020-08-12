@@ -2,9 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import styles from './style.css';
-
-import PurchaseGame from './components/PurchaseGame.jsx';
-import PurchaseBundle from './components/PurchaseBundle.jsx';
+import { PurchaseOptions, GameInformation } from './components';
 
 class App extends React.Component {
   constructor(props) {
@@ -40,14 +38,8 @@ class App extends React.Component {
     const { game, bundles } = this.state;
     return (
       <div className={styles.game_info_wrapper}>
-        <div className={styles.right_column}>
-          <img src="#" />
-        </div>
-        <div className={styles.left_column}>
-          <PurchaseGame game={game} />
-          {bundles.map((bundle) => <PurchaseBundle key={bundle.bundle_id} bundle={bundle} />)}
-        </div>
-
+        <GameInformation game={game} />
+        <PurchaseOptions game={game} bundles={bundles} />
       </div>
 
     );
