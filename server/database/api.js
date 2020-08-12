@@ -9,11 +9,13 @@ const gameById = (id) => {
   let gameData;
   return getGameById(id)
     .then((game) => {
-      gameData = game;
+      [gameData] = game;
       return getTagsByGameId(id);
     })
     .then((tags) => {
-      gameData.tags = tags;
+      if (gameData) {
+        gameData.tags = tags;
+      }
       return Promise.resolve(gameData);
     });
 };
@@ -50,6 +52,7 @@ const bundleByGameId = (id) => (
       });
       return Promise.all(bs);
     })
+    .then((finalData) => Promise.resolve(JSON.parse(JSON.stringify(finalData))))
 );
 
 module.exports = {

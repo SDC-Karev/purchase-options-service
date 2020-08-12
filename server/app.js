@@ -12,8 +12,8 @@ app.get('/api/gameById/:id', (req, res) => {
   const { id } = req.params;
   db.gameById(id)
     .then((data) => {
-      if (data.length !== 0) {
-        res.status(200).json(data[0]);
+      if (data) {
+        res.status(200).json(data);
       } else {
         res.status(404).send('Game not found');
       }
