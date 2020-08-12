@@ -1,24 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { PurchaseButton, SalePurchaseButton } from './PurchaseButtons.jsx'
+import styles from '../style.css';
 
-var PurchaseGame = (props) => (
-  <div className="game=purchase_wrapper">
-    <div className="game_purchase_banner">
-      <h1 className="game_purchase_title">
-       Some Title
-      </h1>
-      <p className="game_purchase_subtitle">
-        Promotion details promotion date
-      </p>
-      <span className="plaforms-icon">Windows</span>
-    </div>
-    <div className="game_purchase">
-      <div className="discount_amount">-50%</div>
-      <div className="prices">
-        <div className="original_price">$100.00</div>
-        <div className="discounted_price">$50.00</div>
+const PurchaseGame = ({ game }) => (
+  <div className={styles.game_purchase_wrapper}>
+    <div className={styles.game_purchase_block}>
+      <div className="game_purchase_banner">
+        <h1>
+          {game.game_name}
+        </h1>
+        <p className={styles.game_purchase_subtitle}>
+          Promotion details promotion date
+        </p>
       </div>
-      <div className="btn_add_to_cart">
-        <a className="btn_purchase_link" href="#">Add To Cart</a>
+      <div className={styles.game_purchase}>
+       {(game.sale_amount === 0) ? <PurchaseButton price={game.game_price} /> : <SalePurchaseButton price={game.game_price} sale_amount={game.sale_amount} />}
       </div>
     </div>
   </div>

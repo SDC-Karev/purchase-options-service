@@ -1,0 +1,288 @@
+/* Central Content Wrappers */
+body .game_info_wrapper {
+  width: 940px;
+  margin: auto;
+  width: 50%;
+}
+
+/* Purchase Options Divs */
+
+.game_purchase_wrapper {
+  margin-bottom: 28px;
+}
+
+.left_column {
+  width: 616px;
+  float: left;
+}
+
+.right_column {
+  width: 308px;
+  float: right;
+  margin-left: 14px;
+  background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%);
+}
+
+
+.game_purchase_block {
+  background: linear-gradient( -60deg, rgba(226,244,255,0.3) 5%,rgba(84, 107, 115, 0.3) 95%);
+  padding: 16px;
+  padding-bottom: 26px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.game_purchase_block h1 {
+  color: #fff;
+  font-family: "Motiva Sans", Sans-serif;
+  font-size: 21px;
+}
+
+.game_purchase_subtitle {
+  color: #7cb8e4;
+}
+
+/* Game Purchase Bar */
+
+.game_purchase {
+  position: absolute;
+  right: 16px;
+  bottom: -17px;
+  left: 16px;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.game_purchase_data {
+  background: #000;
+  margin-left: 2px;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  padding: 2px 2.75px 2px 2.75px;
+}
+
+.game_purchase_data .discount_pct_amount{
+  display: inline-block;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  padding: 0 6px;
+  overflow: hidden;
+  font-size: 25px;
+}
+
+.discount_pct_amount {
+  color: #a4d007;
+  background: #4c6b22;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.game_purchase_data .prices {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  height: 32px;
+  vertical-align: middle;
+}
+
+.discounted_price {
+  color: #acdbf5;
+  font-size: 15px;
+  padding-left: 8px;
+  padding-top: 13px;
+  padding-right: 6px;
+}
+
+.original_price {
+  text-decoration: line-through;
+  position: absolute;
+  color:#626366;
+  left: auto;
+  right: 6px;
+  top: 2px;
+  font-size: 11px;
+}
+
+.nosale_original_price {
+  color: #fff;
+  font-size: 13px;
+  padding-left: 8px;
+  padding-top: 9px;
+  padding-right: 6px;
+}
+
+.green_btn  {
+  margin-left: 2px;
+  display: inline-block;
+  height: 32px;
+  vertical-align: top;
+}
+
+.green_btn a {
+  border-radius: 2px;
+  border: none;
+  padding: 1px;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none !important;
+  color: #d2efa9;
+  background: transparent;
+  text-shadow: 1px 1px 0px rgba( 0, 0, 0, 0.3 );
+}
+
+.green_btn span {
+  background: linear-gradient( to right, #6fa720 5%, #588a1b 95%);
+  border-radius: 2px;
+  display: block;
+  padding: 7px 15px 6px 15px;
+  font-size: 15px;
+}
+
+.green_btn:hover span{
+  background: linear-gradient( to right, #8ed629 5%, #6aa621 95%);
+}
+
+/* Bundle Information Block */
+
+.bundle_info {
+  color: #8f98a0;
+}
+
+.bundle_contents {
+  padding: 6px;
+  margin: 8px 6px 8px -6px;
+  background: rgba(0,0,0,0.5);
+}
+
+.bundle_items_block {
+  position: relative;
+  height: 45;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.bundle_item {
+  display: inline-block;
+  position:relative;
+  cursor: pointer;
+}
+
+.bundle_game {
+  display: inline-block;
+  position:relative;
+}
+
+.bundle_img {
+  position: relative;
+  display: inline-block;
+  height: 45px;
+  width: 120px;
+  border-color: #fff;
+  border: .5px;
+}
+
+/* Tooltip Components */
+
+.bundle_tooltip {
+  color: #acdbf5;
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: 200;
+  display: inline-block;
+}
+
+.bundle_tooltip_text {
+  position: absolute;
+  display:inline-block;
+  visibility: hidden;
+  text-align: left;
+  text-align: start;
+  background: #c2c2c2;
+	color: #3d3d3f;
+  border-radius: 3px;
+  padding: 5px;
+  max-width: 275px;
+  white-space: normal;
+  box-shadow: 0 0 3px #000000;
+  word-wrap: break-word;
+  z-index: 1;
+  font-weight: 200;
+  font-size: 11px;
+  width: 100%;
+  height: 50%;
+  margin-top: -110px;
+  margin-left: -80px;
+}
+
+.bundle_tooltip:hover .bundle_tooltip_text {
+  visibility: visible;
+}
+
+
+
+.bundle_item_tooltip {
+  visibility: hidden;
+  position: absolute;
+}
+
+.bundle_game {
+  display: inline-block;
+}
+
+.game_tooltip {
+  position: absolute;
+  max-width: 400px;
+  visibility: hidden;
+  background: linear-gradient(to bottom, #e3eaef 5%, #b1c1ce 95%);
+  margin-top: -75px;
+  margin-left: 125px;
+  box-shadow: 0 0 3px #000;
+  padding: 2px 8px;
+  z-index: 30;
+  width: 200%;
+  height: 300%;
+  white-space: normal;
+}
+
+.game_tooltip_content {
+  position: relative;
+}
+
+.game_tooltip .game_tooltip_content {
+  color: #3d3f47;
+  font-family: "Motiva Sans", Sans-serif;
+}
+
+.game_tooltip_content h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 1px;
+}
+
+.game_tooltip::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -50px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #c7d5e0 transparent transparent;
+}
+
+
+.bundle_game:hover .game_tooltip  {
+  visibility: visible;
+}
+
+/* OverWriting Webkit */
+a {
+  padding: 0;
+  text-decoration: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}

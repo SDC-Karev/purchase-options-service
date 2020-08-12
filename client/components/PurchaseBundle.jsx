@@ -1,37 +1,25 @@
 import React from 'react';
+import { PurchaseButton, SalePurchaseButton } from './PurchaseButtons.jsx';
+import { BasicTooltip, GameTooltip } from './Tooltips.jsx';
+import styles from '../style.css';
 
-var PurchaseBundle = (props) => (
-  <div className="game=purchase_wrapper">
-    <h1 className="game_purchase_title">
-      Some Title
-      <span className="plaforms_icon"> Windows</span>
+const PurchaseBundle = ({ bundle }) => (
+  <div className={styles.game_purchase_wrapper}>
+    <div className={styles.game_purchase_block}>
+      <BasicTooltip bundle={bundle} />
+      <p className={styles.bundle_info}>Promotion details promotion date</p>
+      <div className={styles.bundle_contents}>
+        <div clasName={styles.bundle_items_block}>
+          <div className="bundle_contents_items">
+            {bundle.games.map((game) => <GameTooltip key={game.game_id} game={game} />)}
+          </div>
+        </div>
 
-    </h1>
-    <p className="bundle_contents">
-      Promotion details promotion date
-      <div className="bundle_contents_items">
-        <a href="item">
-          Item 1
-          <img src="#" />
-        </a>
-        <a href="item">
-          Item 2
-          <img src="#" />
-        </a>
-        <a href="item">
-          Item 2
-          <img src="#" />
-        </a>
       </div>
-    </p>
-    <div className="game_purchase">
-      <div className="discount_amount">-50%</div>
-      <div className="prices">
-        <div className="original_price">$100.00</div>
-        <div className="discounted_price">$50.00</div>
-      </div>
-      <div className="btn_add_to_cart">
-        <a className="btn_green btn_purchase" href="#">Add To Cart</a>
+      <div className={styles.game_purchase}>
+        {(bundle.sale_amount === 0)
+          ? <PurchaseButton price={bundle.bundle_price} />
+          : <SalePurchaseButton price={bundle.bundle_price} sale_amount={bundle.sale_amount} />}
       </div>
     </div>
   </div>
