@@ -40,13 +40,14 @@ class App extends React.Component {
     const { game, bundles } = this.state;
     return (
       <div className={styles.game_info_wrapper}>
+        <div className={styles.right_column}>
+          <img src="#" />
+        </div>
         <div className={styles.left_column}>
           <PurchaseGame game={game} />
           {bundles.map((bundle) => <PurchaseBundle key={bundle.bundle_id} bundle={bundle} />)}
         </div>
-        <div className={styles.right_column}>
-          <img src="#" />
-        </div>
+
       </div>
 
     );
