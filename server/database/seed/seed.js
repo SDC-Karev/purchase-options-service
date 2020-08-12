@@ -129,10 +129,6 @@ const addDatabaseTestingEntry = () => (
     .then(() => (
       db.query('INSERT INTO tags_games (game_id, tag_id) VALUES (?, ?);', [201, 1])
     ))
-    .catch((err) => {
-      console.log('add');
-      console.log(err);
-    })
     .then(() => Promise.resolve())
 
 );
@@ -144,10 +140,6 @@ const rmDatabaseTestingEntry = () => (
     .then(() => db.query('DELETE FROM sales WHERE sale_id = ?', [201]))
     .then(() => db.query('DELETE FROM games_bundles WHERE bundle_id = ?', [201]))
     .then(() => db.query('DELETE FROM tags_games WHERE game_id = ?', [201]))
-    .catch((err) => {
-      console.log('rm');
-      console.log(err);
-    })
     .then(() => Promise.resolve())
 );
 
