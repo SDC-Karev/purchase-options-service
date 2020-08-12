@@ -5,3 +5,8 @@ workflows:
   node-tests:
     jobs:
       - node/test
+steps:
+  - save_cache:
+          paths:
+          - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
