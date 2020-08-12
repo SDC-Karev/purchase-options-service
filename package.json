@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/hrr47-FEC-Bailey/purchase-options#readme",
   "dependencies": {
-    "@syncfusion/ej2-react-popups": "^18.2.46",
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "faker": "^4.1.0",
