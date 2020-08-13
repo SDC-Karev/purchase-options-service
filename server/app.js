@@ -2,8 +2,6 @@ const path = require('path');
 const express = require('express');
 const db = require('./database');
 
-const PORT = 3002;
-
 const app = express();
 
 app.use(express.static(path.join(__dirname, '/../public')));
@@ -39,6 +37,4 @@ app.get('/api/bundleByGameId/:gameId', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+module.exports.app = app;

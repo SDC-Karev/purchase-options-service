@@ -4,8 +4,8 @@
   "description": "Purchasing options component",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/app.js",
-    "start-dev": "nodemon ./server/app.js",
+    "start": "node index.js",
+    "start-dev": "nodemon index.js",
     "build-dev": "webpack -d --watch",
     "seed": "node -e \"require('./server/database/seed/seed.js'),seedDatabase()\"",
     "test": "jest  --detectOpenHandles"
@@ -47,6 +47,7 @@
     "mini-css-extract-plugin": "^0.9.0",
     "nodemon": "^2.0.4",
     "style-loader": "^1.2.1",
+    "supertest": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
@@ -58,9 +59,7 @@
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/.+/helpers/",
       "/config/"
-    ],
-    "testEnvironment": "node"
+    ]
   }
 }

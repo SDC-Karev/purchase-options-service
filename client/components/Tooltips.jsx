@@ -5,7 +5,7 @@ const BasicTooltip = ({ bundle }) => (
   <h1 className={styles.h1}>
     {bundle.bundle_name}
     <div className={styles.bundle_tooltip}>
-      BUNDLE
+      &nbsp;BUNDLE
       <div className={styles.bundle_tooltip_text}>
         Bundles are a special discount on a set of products.  If you already own some of the products contained in the bundle, purchasing the bundle will allow you to &quot;complete the set&quot;, paying only for the products you don&apos;t already own while still receiving the full bundle discount on each of those products.
       </div>

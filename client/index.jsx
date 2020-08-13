@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import styles from './style.css';
-import { PurchaseOptions, GameInformation } from './components';
+import { PurchaseOptions, GameInformation } from './components/index.jsx';
 
 class App extends React.Component {
   constructor(props) {
