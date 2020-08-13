@@ -1,4 +1,6 @@
-const axios = require('axios');
+const request = require('supertest');
+const { app } = require('../server/app.js');
+
 const db = require('../server/database');
 const results = require('./expectedResults.js');
 
@@ -6,58 +8,58 @@ describe('API Endpoints tests', () => {
   beforeAll(db.add);
   afterAll(db.remove);
   it('server returns 200 status code for base page', (done) => {
-    return axios.get('http://127.0.0.1:3002/')
-      .then((res) => {
-        expect(res).not.toBeUndefined;
-        expect(res.status).toBe(200);
+    return request(app)
+      .get('/')
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
         done();
-      })
-      .catch(done.fail);
-
+      });
   });
 
   it('returns data for game of a given id', (done) => {
-    return axios.get('http://127.0.0.1:3002/api/gameById/201')
+    return request(app)
+      .get('/api/gameById/201')
+      .expect('Content-Type', /json/)
+      .expect(200)
       .then((res) => {
-        expect(res).not.toBeUndefined;
-        expect(res.status).toBe(200);
-        expect(res.data).toEqual(results.gameById.exists)
+        expect(res.body).toEqual(results.gameById.exists);
         done();
       })
       .catch(done.fail);
   });
 
   it('returns 404 for game of a given id that doesn\'t exist', (done) => {
-    return axios.get('http://127.0.0.1:3002/api/gameById/205')
-      .then(done.fail)
-      .catch((res) => {
-        expect(res).not.toBeUndefined;
-        expect(res.response.status).toBe(404);
-        expect(res.response.data).toBe(results.gameById.does_not_exist);
+    return request(app)
+      .get('/api/gameById/205')
+      .expect(404)
+      .then((res) => {
+        expect(res.text).toEqual(results.gameById.does_not_exist);
         done();
-      });
+      })
+      .catch(done.fail);
   });
 
   it('returns data for bundle for given game id', (done) => {
-    return axios.get('http://127.0.0.1:3002/api/bundleByGameId/201')
+    return request(app)
+      .get('/api/bundleByGameId/201')
+      .expect(200)
       .then((res) => {
-        expect(res).not.toBeUndefined;
-        expect(res.status).toBe(200);
-        expect(res.data).toEqual(results.bundleByGameId.exists)
-        done()
+        expect(res.body).toEqual(results.bundleByGameId.exists);
+        done();
       })
       .catch(done.fail);
   });
 
   it('returns 404 if no bundle has game of given id', (done) => {
-    return axios.get('http://127.0.0.1:3002/api/bundleByGameId/205')
-      .then(done.fail)
-      .catch((res) => {
-        expect(res).not.toBeUndefined;
-        expect(res.response.status).toBe(404);
-        expect(res.response.data).toBe(results.bundleByGameId.does_not_exist);
+    return request(app)
+      .get('/api/bundleByGameId/205')
+      .expect(404)
+      .then((res) => {
+        expect(res.text).toEqual(results.bundleByGameId.does_not_exist);
         done();
-      });
+      })
+      .catch(done.fail);
   });
 });
 
@@ -111,4 +113,4 @@ describe('Database Tests', () => {
       })
       .catch(done.fail);
   });
-})
+});
