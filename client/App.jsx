@@ -62,19 +62,23 @@ class App extends React.Component {
       });
   }
 
-  onBundleItemHover(game, e) {
-    const c = e.currentTarget.getBoundingClientRect();
-    if (!this.state.hovered_games.hasOwnProperty(game.game_id)) {
-      const games = this.state.hovered_games;
-      games[game.game_id] = game;
-      games[game.game_id].style = {
-        left: c.left + c.width,
-        top: c.top,
-      }
-      this.setState({
-        hovered_games: games,
-      });
+  addBundleItemToHoveredContent (game, bundle_id, context) {
+    const games = this.state.hovered_games;
+    if (!game.hasOwnProperty(game.game_id)) {
+      games[`${bundle_id}_${game.game_id}`] = game;
     };
+    games[`${bundle_id}_${game.game_id}`] .style = {
+      left: context.left + context.width,
+      top: context.top,
+    };
+    this.setState({
+      hovered_games: games,
+    });
+  }
+
+  onBundleItemHover(game, bundle_id, e) {
+    const context = e.currentTarget.getBoundingClientRect();
+    this.addBundleItemToHoveredContent(game, bundle_id, context);
   }
 
   render() {

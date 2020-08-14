@@ -13,8 +13,8 @@ const BasicTooltip = ({ bundle }) => (
   </h1>
 );
 
-const GameTooltip = ({ game, onHover }) => (
-    <a href="#" className={styles.bundle_item} onMouseEnter={(e) => onHover(game, e)}>
+const GameTooltip = ({ game, bundle_id, onHover }) => (
+    <a href="#" className={styles.bundle_item} onMouseEnter={(e) => onHover(game, bundle_id, e)}>
       <div className={styles.bundle_game}>
         <span>
           <img className={styles.bundle_img} src={game.game_banner} alt="Banner for Game" />

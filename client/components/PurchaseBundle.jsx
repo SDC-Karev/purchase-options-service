@@ -14,7 +14,7 @@ const PurchaseBundle = ({ bundle, onBundleItemHover }) => (
       <div className={styles.bundle_contents}>
         <div className={styles.bundle_items_block}>
           <div className={styles.bundle_contents_items}>
-            {bundle.games.map((game) => <GameTooltip key={game.game_id} game={game} onHover={onBundleItemHover} />)}
+            {bundle.games.map((game) => <GameTooltip key={game.game_id} bundle_id={bundle.bundle_id} game={game} onHover={onBundleItemHover} />)}
           </div>
         </div>
       </div>
