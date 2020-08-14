@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../style.css';
+import styles from '../../style.css';
 
 import PurchaseGame from './PurchaseGame.jsx';
 import PurchaseBundle from './PurchaseBundle.jsx';
@@ -10,7 +10,7 @@ const PurchaseOptions = ({
   onBundleItemMouseEnter,
   onBundleItemMouseExit,
 }) => (
-  <div className={styles.left_column}>
+  <div className={styles.purchase_options}>
     <PurchaseGame game={game} />
     {bundles.map((bundle) => (
       <PurchaseBundle

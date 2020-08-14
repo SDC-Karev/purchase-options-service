@@ -1,6 +1,6 @@
 import React from 'react';
 import { PurchaseButtonBlock } from './PurchaseButtons.jsx';
-import styles from '../style.css';
+import styles from '../../style.css';
 
 const PurchaseGame = ({ game }) => (
   <div className={styles.game_purchase_wrapper}>
