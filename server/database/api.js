@@ -3,6 +3,7 @@ const {
   getTagsByGameId,
   getBundleByGameID,
   getGamesFromBundleID,
+  getPlatformsByGameId,
 } = require('./queries.js');
 
 const gameById = (id) => {
@@ -15,6 +16,12 @@ const gameById = (id) => {
     .then((tags) => {
       if (gameData) {
         gameData.tags = tags;
+      }
+      return getPlatformsByGameId(id);
+    })
+    .then((platforms) => {
+      if (gameData) {
+        gameData.platforms = platforms;
       }
       return Promise.resolve(gameData);
     });

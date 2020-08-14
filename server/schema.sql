@@ -44,6 +44,14 @@ CREATE TABLE tags (
   primary key (tag_id)
 );
 
+CREATE TABLE platforms (
+  platform_id int not null auto_increment,
+  platform_name varchar(255) not null unique,
+  platform_class varchar(60) not null,
+  platform_icon varchar(255) not null,
+  primary key (platform_id)
+);
+
 CREATE TABLE tags_games (
   tag_id int not null,
   game_id int not null
@@ -53,3 +61,14 @@ CREATE TABLE games_bundles (
   game_id int not null,
   bundle_id int not null
 );
+
+CREATE TABLE games_platforms (
+  game_id int not null,
+  platform_id int not null
+);
+
+INSERT INTO platforms (platform_name, platform_class, platform_icon)
+  VALUES
+    ('Windows', 'win', 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_platform_win.png'),
+    ('Mac', 'mac', 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_platform_mac.png'),
+    ('SteamOS + Linux', 'lin', 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_steamplay.png');
