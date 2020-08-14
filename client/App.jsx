@@ -3,7 +3,7 @@ import axios from 'axios';
 import faker from 'faker';
 
 import styles from './style.css';
-import { PurchaseOptions, GameInformation, GameDescription } from './components/index.jsx';
+import { PurchaseOptions, GameInformationSideBar, GameDescription } from './components/index.jsx';
 
 const BundleItemTooltip = ({ game, style }) => (
   <div className={styles.game_tooltip} style={style}>
@@ -117,7 +117,7 @@ class App extends React.Component {
       <div>
         <div className={styles.game_info_wrapper}>
           <div className={styles.right_column}>
-            <GameInformation game={game} />
+            <GameInformationSideBar game={game} />
           </div>
           <div className={styles.left_column}>
             <PurchaseOptions
