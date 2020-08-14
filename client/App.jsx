@@ -13,6 +13,9 @@ const BundleTooltip = ({ game, style }) => (
         <span>{`${new Date(game.game_release_date).toDateString().substring(4, 7)} ${new Date(game.game_release_date).getDay()}, ${new Date(game.game_release_date).getFullYear()}`}</span>
       </div>
       <p className={styles.game_tooltip_body_content}>{`Contains 1 item: ${game.game_name}`}</p>
+      <div className={styles.game_tooltip_platforms}>
+        {game.platforms.map((platform) => <span className={styles.platform_icon} style={{ backgroundImage: `url('${platform.platform_icon}')` }} />)}
+      </div>
       <div className={styles.game_tooltip_tag_block}>
         User Tags:
         <div className={styles.game_tooltip_tag_row}>
@@ -88,7 +91,7 @@ class App extends React.Component {
   }
 
   fetchGameData() {
-    const gameId = 3;
+    const gameId = 11;
     axios.get(`/api/gameById/${gameId}`)
       .then((res) => {
         this.setState({
