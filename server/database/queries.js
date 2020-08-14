@@ -46,9 +46,21 @@ const getTagsByGameId = (id) => {
   return db.query(q, [id]);
 };
 
+const getPlatformsByGameId = (id) => {
+  const q = `SELECT p.platform_name, p.platform_icon
+            FROM platforms p
+            INNER JOIN games_platforms gp
+              ON gp.platform_id = p.platform_id
+            WHERE gp.game_id = ?;`;
+
+  return db.query(q, [id]);
+};
+
+
 module.exports = {
   getTagsByGameId,
   getGamesFromBundleID,
   getBundleByGameID,
   getGameById,
+  getPlatformsByGameId,
 };

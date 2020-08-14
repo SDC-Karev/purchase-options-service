@@ -74,7 +74,7 @@ const seedDatabase = () => {
         const tagsList = [];
         [...Array(getRandomInt(2, 5))].forEach(() => {
           let tag = getRandomInt(1, 426);
-          while (tags.indexOf(tag) !== -1) {
+          while (tagsList.indexOf(tag) !== -1) {
             tag = getRandomInt(1, 426);
           }
           tagsList.push(tag);
@@ -82,6 +82,22 @@ const seedDatabase = () => {
         });
       }
       return Promise.all(gt);
+    })
+    .then(() => {
+      // add tags to the games
+      const gp = [];
+      for (let i = 1; i < 101; i += 1) {
+        const platformsList = [];
+        [...Array(getRandomInt(1, 3))].forEach(() => {
+          let platform = getRandomInt(1, 3);
+          while (platformsList.indexOf(platform) !== -1) {
+            platform = getRandomInt(1, 3);
+          }
+          platformsList.push(platform);
+          gp.push(db.query('INSERT INTO games_platforms (game_id, platform_id) VALUES (?, ?)', [i, platform]));
+        });
+      }
+      return Promise.all(gp);
     });
 };
 
