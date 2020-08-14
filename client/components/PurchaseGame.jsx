@@ -4,8 +4,12 @@ import styles from '../style.css';
 
 const PurchaseGame = ({ game }) => (
   <div className={styles.game_purchase_wrapper}>
+
     <div className={styles.game_purchase_block}>
       <div className="game_purchase_banner">
+        <div className={styles.game_platforms}>
+          {(game.platforms) ? game.platforms.map((platform) => <span key={platform.platform_id} className={styles.platform_icon} style={{ backgroundImage: `url('${platform.platform_icon}')` }} />) : null}
+        </div>
         <h1>
           {game.game_name}
         </h1>

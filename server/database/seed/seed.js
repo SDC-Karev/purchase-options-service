@@ -98,6 +98,22 @@ const seedDatabase = () => {
         });
       }
       return Promise.all(gp);
+    })
+    .then(() => {
+      // add tags to the games
+      const bp = [];
+      for (let i = 1; i < 21; i += 1) {
+        const platformsList = [];
+        [...Array(getRandomInt(1, 3))].forEach(() => {
+          let platform = getRandomInt(1, 3);
+          while (platformsList.indexOf(platform) !== -1) {
+            platform = getRandomInt(1, 3);
+          }
+          platformsList.push(platform);
+          bp.push(db.query('INSERT INTO bundles_platforms (bundle_id, platform_id) VALUES (?, ?)', [i, platform]));
+        });
+      }
+      return Promise.all(bp);
     });
 };
 
@@ -145,6 +161,12 @@ const addDatabaseTestingEntry = () => (
     .then(() => (
       db.query('INSERT INTO tags_games (game_id, tag_id) VALUES (?, ?);', [201, 1])
     ))
+    .then(() => (
+      db.query('INSERT INTO games_platforms (game_id, platform_id) VALUES (?, ?);', [201, 1])
+    ))
+    .then(() => (
+      db.query('INSERT INTO bundles_platforms (bundle_id, platform_id) VALUES (?, ?);', [201, 1])
+    ))
     .then(() => Promise.resolve())
 
 );
@@ -156,6 +178,8 @@ const rmDatabaseTestingEntry = () => (
     .then(() => db.query('DELETE FROM sales WHERE sale_id = ?', [201]))
     .then(() => db.query('DELETE FROM games_bundles WHERE bundle_id = ?', [201]))
     .then(() => db.query('DELETE FROM tags_games WHERE game_id = ?', [201]))
+    .then(() => db.query('DELETE FROM games_platforms WHERE game_id = ?', [201]))
+    .then(() => db.query('DELETE FROM bundles_platforms WHERE bundle_id = ?', [201]))
     .then(() => Promise.resolve())
 );
 

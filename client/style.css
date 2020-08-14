@@ -32,6 +32,21 @@ body .game_info_wrapper {
   position: relative;
 }
 
+.game_platforms {
+  float: right;
+}
+
+.platform_icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+}
+
+.platform_icon span {
+  z-index: 30;
+}
+
 .game_purchase_block h1 {
   color: #fff;
   font-family: "Motiva Sans", Sans-serif;
@@ -270,7 +285,20 @@ body .game_info_wrapper {
   font-family: "Motiva Sans", Sans-serif;
 }
 
+.game_tooltip_platforms {
+  float:left;
+  display: block;
+  border-radius: 2px;
+  margin-right: 3px;
+  background-color: #96a3ae;
+  padding: 4px;
+  line-height: 20px;
+  height: 20px;
+}
+
 .game_tooltip_tag_block {
+  float:left;
+  display: block;
   margin-bottom: 6px;
 }
 

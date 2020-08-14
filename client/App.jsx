@@ -4,7 +4,7 @@ import axios from 'axios';
 import styles from './style.css';
 import { PurchaseOptions, GameInformation } from './components/index.jsx';
 
-const BundleTooltip = ({ game, style }) => (
+const BundleItemTooltip = ({ game, style }) => (
   <div className={styles.game_tooltip} style={style}>
     <div className={styles.game_tooltip_spacer} />
     <div className={styles.game_tooltip_content}>
@@ -13,6 +13,9 @@ const BundleTooltip = ({ game, style }) => (
         <span>{`${new Date(game.game_release_date).toDateString().substring(4, 7)} ${new Date(game.game_release_date).getDay()}, ${new Date(game.game_release_date).getFullYear()}`}</span>
       </div>
       <p className={styles.game_tooltip_body_content}>{`Contains 1 item: ${game.game_name}`}</p>
+      <div className={styles.game_tooltip_platforms}>
+        {game.platforms.map((platform) => <span className={styles.platform_icon} style={{ backgroundImage: `url('${platform.platform_icon}')` }} />)}
+      </div>
       <div className={styles.game_tooltip_tag_block}>
         User Tags:
         <div className={styles.game_tooltip_tag_row}>
@@ -24,11 +27,11 @@ const BundleTooltip = ({ game, style }) => (
   </div>
 );
 
-const BundleItem = ({ games }) => (
+const BundleItemTooltipBlock = ({ games }) => (
   <div className={styles.game_tooltip_wrapper}>
     <div className={styles.game_tooltip_container}>
       {Object.keys(games).map((gameKey) => (
-        <BundleTooltip key={gameKey} game={games[gameKey]} style={games[gameKey].style} />
+        <BundleItemTooltip key={gameKey} game={games[gameKey]} style={games[gameKey].style} />
       ))}
     </div>
   </div>
@@ -88,7 +91,7 @@ class App extends React.Component {
   }
 
   fetchGameData() {
-    const gameId = 3;
+    const gameId = 11;
     axios.get(`/api/gameById/${gameId}`)
       .then((res) => {
         this.setState({
@@ -116,7 +119,7 @@ class App extends React.Component {
             onBundleItemMouseExit={this.onBundleItemMouseExit.bind(this)}
           />
         </div>
-        <BundleItem games={hoveredGames} />
+        <BundleItemTooltipBlock games={hoveredGames} />
       </div>
     );
   }

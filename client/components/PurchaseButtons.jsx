@@ -31,9 +31,8 @@ const SalePurchaseButton = ({ price, saleAmount }) => (
 
 const PurchaseButtonBlock = ({ price, saleAmount }) => (
   <div className={styles.game_purchase}>
-    {(saleAmount === 0)
-      ? <PurchaseButton price={price} />
-      : <SalePurchaseButton price={price} saleAmount={saleAmount} />}
+    {(saleAmount < 0)
+      ? <SalePurchaseButton price={price} saleAmount={saleAmount} /> : <PurchaseButton price={price} />}
   </div>
 );
 

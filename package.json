@@ -7,7 +7,7 @@
     "start": "node index.js",
     "start-dev": "nodemon index.js",
     "build-dev": "webpack -d --watch",
-    "seed": "node -e \"require('./server/database/seed/seed.js'),seedDatabase()\"",
+    "seed": "node -e \"require('./server/database/seed/seed.js').seedDatabase()\"",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
