@@ -40,14 +40,18 @@ test('div.game_purchase_block tag should have two children: ["div.game_purchase_
   done();
 });
 
-test('div.game_purchase_banner tag should have two children: ["h1", "p.game_purchase_subtitle"]', (done) => {
+test('div.game_purchase_banner tag should have two children: ["div.game_platforms", "h1", "p.game_purchase_subtitle"]', (done) => {
   const child = renderedApp.childAt(0).childAt(0);
-  expect(child.children().length).toBe(2);
+  expect(child.children().length).toBe(3);
 
-  expect(child.childAt(0).name()).toBe('h1');
+  expect(child.childAt(0).name()).toBe('div');
+  expect(child.childAt(0).hasClass('game_platforms')).toBe(true);
+  expect(child.childAt(0).childAt(0).name()).toBe('span');
 
-  expect(child.childAt(1).name()).toBe('p');
-  expect(child.childAt(1).hasClass('game_purchase_subtitle')).toBe(true);
+  expect(child.childAt(1).name()).toBe('h1');
+
+  expect(child.childAt(2).name()).toBe('p');
+  expect(child.childAt(2).hasClass('game_purchase_subtitle')).toBe(true);
 
   done();
 });

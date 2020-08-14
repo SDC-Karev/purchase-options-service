@@ -4,7 +4,7 @@ import axios from 'axios';
 import styles from './style.css';
 import { PurchaseOptions, GameInformation } from './components/index.jsx';
 
-const BundleTooltip = ({ game, style }) => (
+const BundleItemTooltip = ({ game, style }) => (
   <div className={styles.game_tooltip} style={style}>
     <div className={styles.game_tooltip_spacer} />
     <div className={styles.game_tooltip_content}>
@@ -27,11 +27,11 @@ const BundleTooltip = ({ game, style }) => (
   </div>
 );
 
-const BundleItem = ({ games }) => (
+const BundleItemTooltipBlock = ({ games }) => (
   <div className={styles.game_tooltip_wrapper}>
     <div className={styles.game_tooltip_container}>
       {Object.keys(games).map((gameKey) => (
-        <BundleTooltip key={gameKey} game={games[gameKey]} style={games[gameKey].style} />
+        <BundleItemTooltip key={gameKey} game={games[gameKey]} style={games[gameKey].style} />
       ))}
     </div>
   </div>
@@ -119,7 +119,7 @@ class App extends React.Component {
             onBundleItemMouseExit={this.onBundleItemMouseExit.bind(this)}
           />
         </div>
-        <BundleItem games={hoveredGames} />
+        <BundleItemTooltipBlock games={hoveredGames} />
       </div>
     );
   }
