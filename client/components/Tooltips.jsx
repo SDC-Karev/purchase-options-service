@@ -13,26 +13,14 @@ const BasicTooltip = ({ bundle }) => (
   </h1>
 );
 
-const GameTooltip = ({ game }) => (
-  <a href="#" className={styles.bundle_item}>
-    <div className={styles.bundle_game}>
-      <span>
-        <img className={styles.bundle_img} src={game.game_banner} alt="Banner for Game" />
-      </span>
-      <div className={styles.game_tooltip}>
-        <div className={styles.game_tooltip_content}>
-          <h3 className={styles.game_tooltip_title}>{game.game_name}</h3>
-          <p className={styles.game_tooltip_releasedate}>
-            {`${new Date(game.game_release_date).toDateString(). substring(4, 7)} ${new Date(game.game_release_date).getDay()}, ${new Date(game.game_release_date).getFullYear()}`}
-          </p>
-          <p className={styles.game_tooltip_body_content}>{`Contains 1 item: ${game.game_name}`}</p>
-          <div className={styles.game_tooltip_tag_block}>
-            {game.tags.map((tag) => <div key={tag.tag_id} className={styles.game_tooltip_tag}>{tag.tag_name}</div>)}
-          </div>
-        </div>
+const GameTooltip = ({ game, onHover }) => (
+    <a href="#" className={styles.bundle_item} onMouseEnter={(e) => onHover(game, e)}>
+      <div className={styles.bundle_game}>
+        <span>
+          <img className={styles.bundle_img} src={game.game_banner} alt="Banner for Game" />
+        </span>
       </div>
-    </div>
-  </a>
+    </a>
 );
 
 export {

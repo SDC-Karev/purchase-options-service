@@ -158,20 +158,21 @@ body .game_info_wrapper {
 
 .bundle_items_block {
   position: relative;
-  height: 45;
-  white-space: nowrap;
+  height: 45px;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .bundle_item {
   display: inline-block;
-  position:relative;
+  position: relative;
   cursor: pointer;
+  z-index: 30;
 }
 
 .bundle_game {
   display: inline-block;
-  position:relative;
+  position: relative;
 }
 
 .bundle_img {
@@ -210,7 +211,7 @@ body .game_info_wrapper {
   font-weight: 200;
   font-size: 11px;
   width: 100%;
-  height: 50%;
+  height: 60%;
   margin-top: -110px;
   margin-left: -80px;
 }
@@ -218,8 +219,6 @@ body .game_info_wrapper {
 .bundle_tooltip:hover .bundle_tooltip_text {
   visibility: visible;
 }
-
-
 
 .bundle_item_tooltip {
   visibility: hidden;
@@ -232,21 +231,38 @@ body .game_info_wrapper {
 
 .game_tooltip {
   position: absolute;
-  max-width: 400px;
-  visibility: hidden;
-  background: linear-gradient(to bottom, #e3eaef 5%, #b1c1ce 95%);
-  margin-top: -75px;
-  margin-left: 125px;
-  box-shadow: 0 0 3px #000;
+  width: 306px;;
+  visibility: visible;
+  width: 306px;
+  color: #30455a;
+  font-size: 12px;
+  background: linear-gradient(to bottom, rgba(227,234,239,1) 0%,rgba(199,213,224,1) 100%);
+  box-shadow: 0 0 12px #000000;
   padding: 2px 8px;
   z-index: 30;
-  width: 200%;
-  height: 300%;
   white-space: normal;
+}
+
+.game_tooltip_spacer {
+  margin-bottom: 8px;
+  font-size: 10px;
+  color: #82807C;
 }
 
 .game_tooltip_content {
   position: relative;
+}
+
+.game_tooltip_releasedate {
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game_tooltip_body_content {
+  font-size: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .game_tooltip .game_tooltip_content {
@@ -254,10 +270,40 @@ body .game_info_wrapper {
   font-family: "Motiva Sans", Sans-serif;
 }
 
-.game_tooltip_content h3 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 1px;
+.game_tooltip_tag_block {
+  margin-bottom: 6px;
+}
+
+.game_tooltip_tag_row {
+  overflow: hidden;
+  height: 19px;
+  margin-top: 2px;
+}
+
+.game_tooltip_tag_row .game_tooltip_tag {
+  background-color: #96a3ae;
+  color: rgba(227,234,239,1);
+  box-shadow: none;
+  padding: 0 4px;
+  font-size: 11px;
+  border-radius: 2px;
+}
+
+.game_tooltip_tag {
+  display: inline-block;
+  line-height: 19px;
+  padding: 0 7px;
+  color: #67c1f5;
+  background-color: rgba( 103, 193, 245, 0.2 );
+  box-shadow: none;
+  margin-right: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 3px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .game_tooltip::after {
@@ -272,7 +318,7 @@ body .game_info_wrapper {
 }
 
 
-.bundle_game:hover .game_tooltip  {
+.bundle_item:hover .game_tooltip  {
   visibility: visible;
 }
 
