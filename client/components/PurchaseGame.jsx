@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { PurchaseButtonBlock } from './PurchaseButtons.jsx'
+import { PurchaseButtonBlock } from './PurchaseButtons.jsx';
 import styles from '../style.css';
 
 const PurchaseGame = ({ game }) => (
@@ -14,7 +13,7 @@ const PurchaseGame = ({ game }) => (
           Promotion details promotion date
         </p>
       </div>
-      <PurchaseButtonBlock price={game.game_price} sale_amount={game.sale_amount} />
+      <PurchaseButtonBlock price={game.game_price} saleAmount={game.sale_amount} />
 
     </div>
   </div>
