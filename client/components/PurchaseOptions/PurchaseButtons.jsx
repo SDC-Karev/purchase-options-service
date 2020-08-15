@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../style.css';
+import styles from '../../style.css';
 
 const PurchaseButton = ({ price }) => (
   <div className={styles.game_purchase_data}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PurchaseButtonBlock } from './PurchaseButtons.jsx';
-import { BasicTooltip, GameTooltip } from './Tooltips.jsx';
-import styles from '../style.css';
+import { BasicTooltip, GameTooltip } from '../Tooltips.jsx';
+import styles from '../../style.css';
 
 const PurchaseBundle = ({ bundle, onMouseEnter, onMouseExit }) => (
   <div className={styles.game_purchase_wrapper}>

@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import faker from 'faker';
 
 import styles from './style.css';
-import { PurchaseOptions, GameInformation } from './components/index.jsx';
+import { PurchaseOptions, GameInformationSideBar, GameDescription } from './components/index.jsx';
 
 const BundleItemTooltip = ({ game, style }) => (
   <div className={styles.game_tooltip} style={style}>
@@ -45,6 +46,10 @@ class App extends React.Component {
       game: {},
       bundles: [],
       hoveredGames: {},
+      desc: {
+        about: faker.lorem.paragraphs(),
+        mature_content: faker.lorem.paragraph(),
+      },
     };
   }
 
@@ -107,17 +112,23 @@ class App extends React.Component {
   }
 
   render() {
-    const { game, bundles, hoveredGames } = this.state;
+    const { game, bundles, hoveredGames, desc } = this.state;
     return (
       <div>
         <div className={styles.game_info_wrapper}>
-          <GameInformation game={game} />
-          <PurchaseOptions
-            game={game}
-            bundles={bundles}
-            onBundleItemMouseEnter={this.onBundleItemMouseEnter.bind(this)}
-            onBundleItemMouseExit={this.onBundleItemMouseExit.bind(this)}
-          />
+          <div className={styles.right_column}>
+            <GameInformationSideBar game={game} />
+          </div>
+          <div className={styles.left_column}>
+            <PurchaseOptions
+              game={game}
+              bundles={bundles}
+              onBundleItemMouseEnter={this.onBundleItemMouseEnter.bind(this)}
+              onBundleItemMouseExit={this.onBundleItemMouseExit.bind(this)}
+            />
+            <GameDescription desc={desc}/>
+          </div>
+
         </div>
         <BundleItemTooltipBlock games={hoveredGames} />
       </div>

@@ -1,7 +1,9 @@
-import PurchaseOptions from './PurchaseOptions.jsx';
-import GameInformation from './GameInformation.jsx';
+import PurchaseOptions from './PurchaseOptions/index.jsx';
+import GameInformationSideBar from './GameInformationSideBar/index.jsx';
+import GameDescription from './GameDescription/index.jsx';
 
 export {
   PurchaseOptions,
-  GameInformation,
+  GameInformationSideBar,
+  GameDescription,
 };
