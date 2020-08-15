@@ -33,7 +33,41 @@ const GameTooltip = ({
   </a>
 );
 
+const BundleItemTooltip = ({ game, style }) => (
+  <div className={styles.game_tooltip} style={style}>
+    <div className={styles.game_tooltip_spacer} />
+    <div className={styles.game_tooltip_content}>
+      <h4 className={styles.game_tooltip_title}>{game.game_name}</h4>
+      <div className={styles.game_tooltip_releasedate}>
+        <span>{`${new Date(game.game_release_date).toDateString().substring(4, 7)} ${new Date(game.game_release_date).getDay()}, ${new Date(game.game_release_date).getFullYear()}`}</span>
+      </div>
+      <p className={styles.game_tooltip_body_content}>{`Contains 1 item: ${game.game_name}`}</p>
+      <div className={styles.game_tooltip_platforms}>
+        {game.platforms.map((platform) => <span key={platform.platform_name} className={styles.platform_icon} style={{ backgroundImage: `url('${platform.platform_icon}')` }} />)}
+      </div>
+      <div className={styles.game_tooltip_tag_block}>
+        User Tags:
+        <div className={styles.game_tooltip_tag_row}>
+          {game.tags.map((tag) => (
+            <div key={tag.tag_name} className={styles.game_tooltip_tag}>{tag.tag_name}</div>))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const BundleItemTooltipBlock = ({ games }) => (
+  <div className={styles.game_tooltip_wrapper}>
+    <div className={styles.game_tooltip_container}>
+      {Object.keys(games).map((gameKey) => (
+        <BundleItemTooltip key={gameKey} game={games[gameKey]} style={games[gameKey].style} />
+      ))}
+    </div>
+  </div>
+);
+
 export {
   BasicTooltip,
   GameTooltip,
+  BundleItemTooltipBlock,
 };

@@ -7,7 +7,7 @@ const PurchaseBundle = ({ bundle, onMouseEnter, onMouseExit }) => (
   <div className={styles.game_purchase_wrapper}>
     <div className={styles.game_purchase_block}>
       <div className={styles.game_platforms}>
-        {bundle.platforms.map((platform) => <span key={platform.platform_id} className={styles.platform_icon} style={{ backgroundImage: `url('${platform.platform_icon}')` }} />) }
+        {bundle.platforms.map((platform) => <span key={platform.platform_name} className={styles.platform_icon} style={{ backgroundImage: `url('${platform.platform_icon}')` }} />) }
       </div>
       <BasicTooltip bundle={bundle} />
       <p className={styles.bundle_info}>

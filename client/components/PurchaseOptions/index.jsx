@@ -4,7 +4,7 @@ import styles from '../../style.css';
 import PurchaseGame from './PurchaseGame.jsx';
 import PurchaseBundle from './PurchaseBundle.jsx';
 
-const PurchaseOptions = ({
+const PurchaseOptionsBlock = ({
   game,
   bundles,
   onBundleItemMouseEnter,
@@ -23,4 +23,4 @@ const PurchaseOptions = ({
   </div>
 );
 
-export default PurchaseOptions;
+export default PurchaseOptionsBlock;
