@@ -1,4 +1,3 @@
-
 echo ""
 echo "Setting up \"Purchase Options\" Component for Steam FEC"
 echo ""
@@ -33,5 +32,6 @@ echo "
     host: 'localhost',
   }
 " > ./server/database/config.js
+
 npm run seed
 echo "Configuration Complete!"
