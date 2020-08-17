@@ -7,7 +7,7 @@
   - https://github.com/hrr47-FEC-Bailey/media-window
   - https://github.com/hrr47-FEC-Bailey/reviews
   - https://github.com/hrr47-FEC-Bailey/similar-games
-  - https://github.com/hrr47-FEC-Bailey/tristan-proxy
+  - httos://github.com/hrr47-FEC-Bailey/game-sidebar
 
 ## Table of Contents
 

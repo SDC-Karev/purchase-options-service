@@ -65,7 +65,7 @@ describe('PurchaseButton Tests', () => {
 
 describe('SalePurchaseButton Tests', () => {
   beforeAll((done) => {
-    renderedApp = shallow(<SalePurchaseButton price={ 5000 } sale_amount={ -50 }/>);
+    renderedApp = shallow(<SalePurchaseButton price={ 5000 } saleAmount={ -50 }/>);
     done();
   });
 
@@ -124,12 +124,11 @@ describe('SalePurchaseButton Tests', () => {
     done();
   });
 
-})
-
+});
 
 describe('PurchaseButtonBlock Tests', () => {
   test('should have a single top level <div> tag with className "game_purchase"', (done) => {
-    renderedApp = shallow(<PurchaseButtonBlock price={ 5000 } sale_amount={ -50} />);
+    renderedApp = shallow(<PurchaseButtonBlock price={ 5000 } saleAmount={ -50} />);
 
     expect(renderedApp.length).toBe(1);
     expect(renderedApp.name()).toBe('div');
@@ -139,7 +138,7 @@ describe('PurchaseButtonBlock Tests', () => {
   });
 
   test('div.game_purchase tag should have one child (if there is a sale): ["SalePurchaseButton"]', (done) => {
-    renderedApp = shallow(<PurchaseButtonBlock price={ 5000 } sale_amount={ -50} />);
+    renderedApp = shallow(<PurchaseButtonBlock price={ 5000 } saleAmount={ -50} />);
 
     expect(renderedApp.childAt(0).name()).toBe('SalePurchaseButton');
 
@@ -147,7 +146,7 @@ describe('PurchaseButtonBlock Tests', () => {
   });
 
   test('div.game_purchase tag should have one child (if there is no sale): ["PurchaseButton"]', (done) => {
-    renderedApp = shallow(<PurchaseButtonBlock price={ 5000 } sale_amount={ 0 } />);
+    renderedApp = shallow(<PurchaseButtonBlock price={ 5000 } saleAmount = { 0 } />);
 
     expect(renderedApp.childAt(0).name()).toBe('PurchaseButton');
 

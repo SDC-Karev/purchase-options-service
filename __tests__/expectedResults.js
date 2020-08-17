@@ -7,10 +7,16 @@ module.exports = {
       sale_amount: -50,
       game_banner: 'img/url',
       dev_name: 'Test Developer',
+      platforms: [
+        {
+          platform_name: 'Windows',
+          platform_icon: 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_platform_win.png',
+        },
+      ],
       tags: [
         {
           tag_name: 'Indie',
-          tag_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/doronmalki/128.jpg',
+          tag_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/fuck_you_two/128.jpg',
         },
       ],
     },
@@ -33,9 +39,21 @@ module.exports = {
             tags: [
               {
                 tag_name: 'Indie',
-                tag_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/doronmalki/128.jpg',
+                tag_icon: 'https://s3.amazonaws.com/uifaces/faces/twitter/fuck_you_two/128.jpg',
               },
             ],
+            platforms: [
+              {
+                platform_name: 'Windows',
+                platform_icon: 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_platform_win.png',
+              },
+            ],
+          },
+        ],
+        platforms: [
+          {
+            platform_name: 'Windows',
+            platform_icon: 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_platform_win.png',
           },
         ],
       },

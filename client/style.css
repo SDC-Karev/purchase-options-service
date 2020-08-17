@@ -1,14 +1,53 @@
 /* Central Content Wrappers */
-body .game_info_wrapper {
-  width: 940px;
-  margin: auto;
-  width: 50%;
+
+body {
+  position: relative;
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #c6d4df;
+  font-size: 12px;
 }
 
-/* Purchase Options Divs */
+body .game_info_wrapper {
+  width: 940px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 10px;
+  letter-spacing: 2px;
+  font-weight: normal;
+  padding-top: 2px;
+}
+
+table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  border-spacing: 2px;
+  border-color: grey;
+  width: 100%
+}
+
+/* DOM Formatting Elements */
 
 .game_purchase_wrapper {
   margin-bottom: 28px;
+}
+
+.game_information > div {
+  background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%);
+  padding: 16px;
+  margin-bottom: 8px;
+  margin-top: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #c6d4df;
+  font-size: 12px;
 }
 
 .left_column {
@@ -16,13 +55,252 @@ body .game_info_wrapper {
   float: left;
 }
 
+.left_column_spacer {
+  height: 15px;
+}
+
 .right_column {
   width: 308px;
   float: right;
   margin-left: 14px;
-  background: linear-gradient(to right, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%);
 }
 
+/* Game Information SideBar */
+
+.game_info_category {
+  min-height: 26px;
+  position: relative;
+  margin-bottom: 2px;
+  background-color: rgba( 0, 0, 0, 0.2 );
+}
+
+.game_info_category_icon {
+  position: absolute;
+  left: 0px;
+  width: 30px;
+  min-height: 22px;
+  padding-top: 5px;
+  padding-left: 6px;
+  height: 100%;
+}
+
+.game_info_category_icon img {
+  width: 26px;
+  height: 16px;
+  vertical-align: top;
+}
+
+.game_info_category_name {
+  margin-left: 37px;
+  min-height: 22px;
+  padding-top: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  line-height: 18px;
+  background: rgba( 103, 193, 245, 0.1 );
+  color: #67c1f5;
+  display: block;
+  border-radius: 1px;
+}
+
+.game_info_category_name:hover {
+  color: #fff;
+  background: #67c1f5;
+}
+
+.eula_notice {
+  color: #e1c48a;
+  padding: 4px 8px;
+  line-height: 17px;
+  border-radius: 1px;
+  margin-top: 12px;
+  background: linear-gradient(135deg, rgba(130,114,81,0.5) 0%,rgba(226,197,139,0.5) 100%);
+}
+
+.eula_notice a {
+  color: #fff;
+}
+
+.eula_notice a:hover {
+  color: #67c1f5;
+}
+
+.game_language_title {
+  font-size: 12px;
+  color: #8f98a0;
+  margin-bottom: 2px;
+}
+
+.game_languages_table {
+  border-collapse: collapse;
+  display: table;
+  box-sizing: border-box;
+  border-spacing: 2px;
+  border-color: grey;
+}
+
+.game_languages_table th {
+  width: 62px;
+  font-size: 12px;
+  color: #b0aeac;
+  font-weight: normal;
+}
+
+.game_languages_table tr{
+  border-bottom: 1px solid #626366;
+}
+
+.game_languages_table td {
+  padding: 3px 0px 3px 0px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.lang_name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lang_check {
+  font-weight: bold;
+  color: #67c1f5;
+}
+
+.game_rating_block {
+  color: #c6d4df;
+  font-size: 12px;
+}
+
+.game_rating_details {
+  display: flex;
+}
+
+.game_rating_image {
+  margin-right: 10px;
+}
+
+.game_rating_details_description p {
+  margin: 0;
+  font-size: 11px !important;
+  color: #c6d4df !important;
+  text-transform: uppercase;
+  line-height: 14px;
+}
+
+.game_rating_provider {
+  margin-top: 10px;
+}
+
+.blue_btn {
+  border-radius: 2px;
+  border: none;
+  padding: 1px;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none !important;
+  color: #67c1f5 !important;
+  background: rgba( 103, 193, 245, 0.2 );
+  margin-left: 3px;
+}
+
+.blue_btn:hover {
+  background: #67c1f5;
+}
+
+.blue_btn:hover span {
+  color: #fff;
+}
+
+.blue_btn span {
+  padding: 0 15px;
+  font-size: 15px;
+  line-height: 30px;
+  border-radius: 2px;
+  display: block;
+  background: transparent;
+}
+.report_icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url('https://store.cloudflare.steamstatic.com/public/shared/images/buttons/icons_16.png?v=5');
+  margin: 7px 0;
+  vertical-align: top;
+  background-position: -256px 0px;
+}
+
+/* Game Descriptions Divs */
+
+.game_description_block {
+  line-height: 1.5em;
+  font-size: 14px;
+  margin-top: 30px;
+  overflow: hidden;
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: normal;
+}
+
+.game_description_block h2 {
+  line-height: 26px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFFFFF;
+  background-image: url('https://store.cloudflare.steamstatic.com/public/images/v6/maincol_gradient_rule.png');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+
+.game_description_block p {
+  margin-bottom: 8px;
+}
+
+.game_system_reqs_contents_wrapper {
+  margin-top: 10px;
+}
+
+.game_system_reqs_data {
+  font-size: 12px;
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: normal;
+}
+
+.game_system_reqs_data ul{
+  list-style-type: none;
+  margin-left: 0px;
+  line-height: 18px;
+}
+
+.game_system_reqs_data ul ul {
+  list-style-position: outside;
+}
+
+.game_system_reqs_data li {
+  margin: 2px 0px;
+}
+
+.game_system_reqs_data strong {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 10px;
+  color: #bcc6cd;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.sys_req_left_col {
+  float: left;
+  width: 300px;
+}
+
+.sys_req_left_col {
+  margin-left: 8px;
+  float: left;
+  width: 300px;
+}
+
+/* Purchase Options Divs */
 
 .game_purchase_block {
   background: linear-gradient( -60deg, rgba(226,244,255,0.3) 5%,rgba(84, 107, 115, 0.3) 95%);
@@ -30,6 +308,21 @@ body .game_info_wrapper {
   padding-bottom: 26px;
   border-radius: 4px;
   position: relative;
+}
+
+.game_platforms {
+  float: right;
+}
+
+.platform_icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+}
+
+.platform_icon span {
+  z-index: 30;
 }
 
 .game_purchase_block h1 {
@@ -158,20 +451,21 @@ body .game_info_wrapper {
 
 .bundle_items_block {
   position: relative;
-  height: 45;
-  white-space: nowrap;
+  height: 45px;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .bundle_item {
   display: inline-block;
-  position:relative;
+  position: relative;
   cursor: pointer;
+  z-index: 30;
 }
 
 .bundle_game {
   display: inline-block;
-  position:relative;
+  position: relative;
 }
 
 .bundle_img {
@@ -206,11 +500,11 @@ body .game_info_wrapper {
   white-space: normal;
   box-shadow: 0 0 3px #000000;
   word-wrap: break-word;
-  z-index: 1;
+  z-index: 30;
   font-weight: 200;
   font-size: 11px;
   width: 100%;
-  height: 50%;
+  height: 60%;
   margin-top: -110px;
   margin-left: -80px;
 }
@@ -218,8 +512,6 @@ body .game_info_wrapper {
 .bundle_tooltip:hover .bundle_tooltip_text {
   visibility: visible;
 }
-
-
 
 .bundle_item_tooltip {
   visibility: hidden;
@@ -232,21 +524,38 @@ body .game_info_wrapper {
 
 .game_tooltip {
   position: absolute;
-  max-width: 400px;
-  visibility: hidden;
-  background: linear-gradient(to bottom, #e3eaef 5%, #b1c1ce 95%);
-  margin-top: -75px;
-  margin-left: 125px;
-  box-shadow: 0 0 3px #000;
+  width: 306px;;
+  visibility: visible;
+  width: 306px;
+  color: #30455a;
+  font-size: 12px;
+  background: linear-gradient(to bottom, rgba(227,234,239,1) 0%,rgba(199,213,224,1) 100%);
+  box-shadow: 0 0 12px #000000;
   padding: 2px 8px;
   z-index: 30;
-  width: 200%;
-  height: 300%;
   white-space: normal;
+}
+
+.game_tooltip_spacer {
+  margin-bottom: 8px;
+  font-size: 10px;
+  color: #82807C;
 }
 
 .game_tooltip_content {
   position: relative;
+}
+
+.game_tooltip_releasedate {
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game_tooltip_body_content {
+  font-size: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .game_tooltip .game_tooltip_content {
@@ -254,10 +563,54 @@ body .game_info_wrapper {
   font-family: "Motiva Sans", Sans-serif;
 }
 
-.game_tooltip_content h3 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 1px;
+.game_tooltip_platforms {
+  float:left;
+  display: block;
+  border-radius: 2px;
+  margin-right: 3px;
+  background-color: #96a3ae;
+  padding: 4px;
+  line-height: 20px;
+  height: 20px;
+  margin-bottom: 6px;
+}
+
+.game_tooltip_tag_block {
+  float:left;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.game_tooltip_tag_row {
+  overflow: hidden;
+  height: 19px;
+  margin-top: 2px;
+}
+
+.game_tooltip_tag_row .game_tooltip_tag {
+  background-color: #96a3ae;
+  color: rgba(227,234,239,1);
+  box-shadow: none;
+  padding: 0 4px;
+  font-size: 11px;
+  border-radius: 2px;
+}
+
+.game_tooltip_tag {
+  display: inline-block;
+  line-height: 19px;
+  padding: 0 7px;
+  color: #67c1f5;
+  background-color: rgba( 103, 193, 245, 0.2 );
+  box-shadow: none;
+  margin-right: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 3px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .game_tooltip::after {
@@ -272,7 +625,7 @@ body .game_info_wrapper {
 }
 
 
-.bundle_game:hover .game_tooltip  {
+.bundle_item:hover .game_tooltip  {
   visibility: visible;
 }
 

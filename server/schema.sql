@@ -67,8 +67,14 @@ CREATE TABLE games_platforms (
   platform_id int not null
 );
 
+CREATE TABLE bundles_platforms (
+  bundle_id int not null,
+  platform_id int not null
+);
+
+
 INSERT INTO platforms (platform_name, platform_class, platform_icon)
   VALUES
     ('Windows', 'win', 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_platform_win.png'),
     ('Mac', 'mac', 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_platform_mac.png'),
-    ('SteamOS + Linux', 'lin', 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_steamplay.png');
+    ('SteamOS + Linux', 'lin', 'https://store.cloudflare.steamstatic.com/public/images/v6/icon_platform_linux.png');
