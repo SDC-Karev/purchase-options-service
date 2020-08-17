@@ -16,12 +16,23 @@ test('should have a single top level <div> tag', (done) => {
   done();
 });
 
-test('should have two children of the <div> tag for left & right columns', (done) => {
-  expect(renderedApp.children().length).toBe(2);
+test('should have a single top level <div> tag', (done) => {
+  expect(renderedApp.childAt(0).length).toBe(1);
+  expect(renderedApp.childAt(0).name()).toBe('div');
+  expect(renderedApp.childAt(0).hasClass('game_info_wrapper')).toBe(true);
 
-  expect(renderedApp.childAt(0).name()).toBe('GameInformation');
+  expect(renderedApp.childAt(1).name()).toBe('BundleItemTooltipBlock');
 
-  expect(renderedApp.childAt(1).name()).toBe('PurchaseOptions');
+  done();
+});
+
+test('div.game_info_wrapper should have 2 children of the <div> tag for left & right columns', (done) => {
+  const child = renderedApp.childAt(0);
+  expect(child.children().length).toBe(2);
+
+  expect(child.childAt(0).name()).toBe('GameInformation');
+
+  expect(child.childAt(1).name()).toBe('PurchaseOptions');
 
   done();
 });

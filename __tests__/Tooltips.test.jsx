@@ -69,14 +69,11 @@ describe('GameTooltip Tests', () => {
     done();
   });
 
-  test('div.bundle_game tag should have two children: ["span", "div.game_tooltip"]', (done) => {
+  test('div.bundle_game tag should have one children: "span"', (done) => {
     const child = renderedApp.childAt(0);
-    expect(child.children().length).toBe(2);
+    expect(child.children().length).toBe(1);
 
     expect(child.childAt(0).name()).toBe('span');
-
-    expect(child.childAt(1).name()).toBe('div');
-    expect(child.childAt(1).hasClass('game_tooltip')).toBe(true);
 
     done();
   });
@@ -88,49 +85,6 @@ describe('GameTooltip Tests', () => {
 
     expect(child.childAt(0).name()).toBe('img');
     expect(child.childAt(0).hasClass('bundle_img')).toBe(true);
-
-    done();
-  });
-
-  test('div.game_tooltip tag should have one child: "div.game_tooltip_content"', (done) => {
-    const child = renderedApp.childAt(0).childAt(1);
-
-    expect(child.children().length).toBe(1);
-
-    expect(child.childAt(0).name()).toBe('div');
-    expect(child.childAt(0).hasClass('game_tooltip_content')).toBe(true);
-
-    done();
-  });
-
-  test('div.game_tooltip_content tag should have 4 children: ["h3.game_tooltip_title", "p.game_tooltip_releasedate", "p.game_tooltip_body_content", "div.game_tooltip_tag_block"]', (done) => {
-    const child = renderedApp.childAt(0).childAt(1).childAt(0);
-
-    expect(child.children().length).toBe(4);
-
-    expect(child.childAt(0).name()).toBe('h3');
-    expect(child.childAt(0).hasClass('game_tooltip_title')).toBe(true);
-
-    expect(child.childAt(1).name()).toBe('p');
-    expect(child.childAt(1).hasClass('game_tooltip_releasedate')).toBe(true);
-
-    expect(child.childAt(2).name()).toBe('p');
-    expect(child.childAt(2).hasClass('game_tooltip_body_content')).toBe(true);
-
-    expect(child.childAt(3).name()).toBe('div');
-    expect(child.childAt(3).hasClass('game_tooltip_tag_block')).toBe(true);
-    done();
-  });
-
-
-  test('div.game_tooltip_tag_block tag should have one child: "div.game_tooltip_tag"', (done) => {
-    const child = renderedApp.childAt(0).childAt(1).childAt(0).childAt(3);
-
-
-    expect(child.children().length).toBe(1);
-
-    expect(child.childAt(0).name()).toBe('div');
-    expect(child.childAt(0).hasClass('game_tooltip_tag')).toBe(true);
 
     done();
   });

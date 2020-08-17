@@ -164,6 +164,12 @@ const addDatabaseTestingEntry = () => (
     .then(() => (
       db.query('INSERT INTO tags_games (game_id, tag_id) VALUES (?, ?);', [201, 1])
     ))
+    .then(() => (
+      db.query('INSERT INTO games_platforms (game_id, platform_id) VALUES (?, ?);', [201, 1])
+    ))
+    .then(() => (
+      db.query('INSERT INTO bundles_platforms (bundle_id, platform_id) VALUES (?, ?);', [201, 1])
+    ))
     .then(() => Promise.resolve())
 
 );
@@ -175,6 +181,8 @@ const rmDatabaseTestingEntry = () => (
     .then(() => db.query('DELETE FROM sales WHERE sale_id = ?', [201]))
     .then(() => db.query('DELETE FROM games_bundles WHERE bundle_id = ?', [201]))
     .then(() => db.query('DELETE FROM tags_games WHERE game_id = ?', [201]))
+    .then(() => db.query('DELETE FROM games_platforms WHERE game_id = ?', [201]))
+    .then(() => db.query('DELETE FROM bundles_platforms WHERE bundle_id = ?', [201]))
     .then(() => Promise.resolve())
 );
 

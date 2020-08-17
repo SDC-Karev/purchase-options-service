@@ -4,6 +4,7 @@ const {
   getBundleByGameID,
   getGamesFromBundleID,
   getPlatformsByGameId,
+  getPlatformsByBundleId,
 } = require('./queries.js');
 
 const gameById = (id) => {
@@ -30,26 +31,34 @@ const gameById = (id) => {
 const bundleByGameId = (id) => (
   getBundleByGameID(id) // get bundle data
     .then((bundlesResp) => {
-      const data = bundlesResp.map((bundle) => (
-        getGamesFromBundleID(bundle.bundle_id)
+      const data = bundlesResp.map((bundle) => {
+        const b = bundle;
+        return getGamesFromBundleID(bundle.bundle_id)
           .then((gamesBundleResp) => {
-            const b = bundle;
             b.games = gamesBundleResp;
-            return Promise.resolve(b);
+            return getPlatformsByGameId(bundle.bundle_id);
           })
-      ));
+          .then((platforms) => {
+            b.platforms = platforms;
+            return Promise.resolve(b);
+          });
+      });
       return Promise.all(data);
     })
     .then((bundles) => {
       const bs = bundles.map((bundle) => {
-        const games = bundle.games.map((game) => (
-          getTagsByGameId(game.game_id)
+        const games = bundle.games.map((game) => {
+          const g = game;
+          return getTagsByGameId(g.game_id)
             .then((tags) => {
-              const g = game;
               g.tags = tags;
-              return Promise.resolve(g);
+              return getPlatformsByGameId(g.game_id);
             })
-        ));
+            .then((platforms) => {
+              g.platforms = platforms;
+              return Promise.resolve(g);
+            });
+          });
         const b = bundle;
         return Promise.all(games)
           .then((gamesResult) => {
