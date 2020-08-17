@@ -114,6 +114,9 @@ const seedDatabase = () => {
         });
       }
       return Promise.all(bp);
+    })
+    .then(() => {
+      process.exit(0);
     });
 };
 

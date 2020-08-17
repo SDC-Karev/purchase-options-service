@@ -105,3 +105,4 @@ dist
 
 # Ignore Compressed React
 public/bundle.js
+server/database/config.js
