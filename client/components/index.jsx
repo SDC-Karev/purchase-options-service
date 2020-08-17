@@ -1,9 +1,7 @@
-import PurchaseOptions from './PurchaseOptions/index.jsx';
-import GameInformationSideBar from './GameInformationSideBar/index.jsx';
-import GameDescription from './GameDescription/index.jsx';
+import PurchaseOptionsBlock from './PurchaseOptions/index.jsx';
+import { BundleItemTooltipBlock } from './Tooltips.jsx';
 
 export {
-  PurchaseOptions,
-  GameInformationSideBar,
-  GameDescription,
+  PurchaseOptionsBlock,
+  BundleItemTooltipBlock,
 };
