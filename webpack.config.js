@@ -35,4 +35,10 @@ module.exports = {
       },
     ],
   },
+<<<<<<< Updated upstream
+=======
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss', '.css'],
+  },
+>>>>>>> Stashed changes
 };
