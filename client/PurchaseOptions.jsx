@@ -1,9 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import faker from 'faker';
 
-import styles from './style.css';
-import { PurchaseOptionsBlock, BundleItemTooltipBlock } from './components/index.jsx';
+import { PurchaseOptionsBlock, BundleItemTooltipBlock } from './components/index';
 
 class PurchaseOptions extends React.Component {
   constructor(props) {
@@ -59,14 +57,14 @@ class PurchaseOptions extends React.Component {
   }
 
   fetchGameData() {
-    const gameId = 11;
-    axios.get(`/api/gameById/${gameId}`)
+    const gameId = this.props.gameId;
+    axios.get(`http://localhost:3002/api/gameById/${gameId}`)
       .then((res) => {
         this.setState({
           game: res.data,
         });
       })
-      .then(() => axios.get(`/api/bundleByGameId/${gameId}`))
+      .then(() => axios.get(`http://localhost:3002/api/bundleByGameId/${gameId}`))
       .then((res) => {
         this.setState({
           bundles: res.data,
@@ -90,4 +88,4 @@ class PurchaseOptions extends React.Component {
   }
 }
 
-export default PurchaseOptions;
+export { PurchaseOptions };

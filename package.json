@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start-dev": "nodemon index.js",
+    "start:dev": "nodemon index.js",
     "build-dev": "webpack -d --watch",
     "build": "webpack -d",
     "seed": "node -e \"require('./server/database/seed/seed.js').seedDatabase()\"",

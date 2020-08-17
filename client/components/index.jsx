@@ -1,5 +1,5 @@
-import PurchaseOptionsBlock from './PurchaseOptions/index.jsx';
-import { BundleItemTooltipBlock } from './Tooltips.jsx';
+import PurchaseOptionsBlock from './PurchaseOptions/index';
+import { BundleItemTooltipBlock } from './Tooltips';
 
 export {
   PurchaseOptionsBlock,
