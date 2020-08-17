@@ -7,7 +7,8 @@
     "start": "node index.js",
     "start-dev": "nodemon index.js",
     "build-dev": "webpack -d --watch",
-    "seed": "node -e \"require('./server/database/seed/seed.js'),seedDatabase()\"",
+    "build": "webpack -d",
+    "seed": "node -e \"require('./server/database/seed/seed.js').seedDatabase()\"",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
@@ -16,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/hrr47-FEC-Bailey/purchase-options.git"
   },
-  "author": "",
+  "author": "Tristan Smith",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hrr47-FEC-Bailey/purchase-options/issues"

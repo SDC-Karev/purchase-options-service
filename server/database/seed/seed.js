@@ -98,6 +98,25 @@ const seedDatabase = () => {
         });
       }
       return Promise.all(gp);
+    })
+    .then(() => {
+      // add tags to the games
+      const bp = [];
+      for (let i = 1; i < 21; i += 1) {
+        const platformsList = [];
+        [...Array(getRandomInt(1, 3))].forEach(() => {
+          let platform = getRandomInt(1, 3);
+          while (platformsList.indexOf(platform) !== -1) {
+            platform = getRandomInt(1, 3);
+          }
+          platformsList.push(platform);
+          bp.push(db.query('INSERT INTO bundles_platforms (bundle_id, platform_id) VALUES (?, ?)', [i, platform]));
+        });
+      }
+      return Promise.all(bp);
+    })
+    .then(() => {
+      process.exit(0);
     });
 };
 
