@@ -4,12 +4,10 @@ const SRC_DIR = path.join(__dirname, 'client');
 const DIST_DIR = path.join(__dirname, 'public');
 
 module.exports = {
-  entry: path.resolve(SRC_DIR, 'PurchaseOptions.jsx'),
+  entry: path.resolve(SRC_DIR, 'index.jsx'),
   output: {
-    filename: 'app.js',
+    filename: 'bundle.js',
     path: DIST_DIR,
-    library: 'PurchaseOptions',
-    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -38,6 +36,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss', '.css']
+    extensions: ['.js', '.jsx', '.scss', '.css'],
   },
 };

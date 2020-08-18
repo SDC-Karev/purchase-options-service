@@ -69,7 +69,8 @@ class PurchaseOptions extends React.Component {
         this.setState({
           bundles: res.data,
         });
-      });
+      })
+      .catch();
   }
 
   render() {
@@ -88,4 +89,4 @@ class PurchaseOptions extends React.Component {
   }
 }
 
-export { PurchaseOptions };
+export default PurchaseOptions;
