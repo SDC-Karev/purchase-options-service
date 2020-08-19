@@ -32,7 +32,7 @@ class PurchaseOptions extends React.Component {
       hoveredGames[key] = game;
     }
     hoveredGames[key].style = {
-      left: context.left + context.width,
+      left: context.left - context.width,
       top: context.top,
       display: 'none',
     };
@@ -47,7 +47,7 @@ class PurchaseOptions extends React.Component {
       hoveredGames[key] = game;
     }
     hoveredGames[key].style = {
-      left: context.left + context.width,
+      left: context.left - context.width * 2,
       top: context.top,
       display: 'block',
     };

@@ -28,7 +28,7 @@ echo "
     connectionLimit: 10,
     user: '$username',
     password: '$password',
-    database: 'steam',
+    database: 'purchaseOptions',
     host: 'localhost',
   }
 " > ./server/database/config.js
