@@ -1,6 +1,6 @@
-CREATE DATABASE steam;
+CREATE DATABASE purchaseOptions;
 
-USE steam;
+USE purchaseOptions;
 
 CREATE TABLE games (
   game_id int not null auto_increment,
