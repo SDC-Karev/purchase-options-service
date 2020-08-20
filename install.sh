@@ -9,9 +9,10 @@ echo "Setting up \"Purchase Options\" Component for Steam FEC"
 echo ""
 
 echo ""
-echo "  Working on correct/up-to-date branch"
-git checkout master
-git pull origin master
+echo "  Cloning Repository"
+git clone https://github.com/hrr47-FEC-Baily/purchase-options/
+
+cd purchase-options
 
 echo ""
 echo "  Installing Dependancies"
@@ -29,3 +30,4 @@ mysql --user=$SQL_USER --password=$SQL_PW --execute="$sqlExecute"
 
 npm run seed
 echo "Configuration Complete!"
+cd ..

@@ -1,7 +1,13 @@
 const mysql = require('mysql');
-const config = require('./config.js');
 
-const db = mysql.createPool(config);
+require('dotenv').config('../.env');
+
+const db = mysql.createPool({
+  connectionLimit: 10,
+  user: process.env.SQL_USER,
+  password: process.env.SQL_PW,
+  database: 'purchaseOptionscea',
+});
 
 const query = (queryString, queryArgs) => (
   new Promise((resolve, reject) => {
