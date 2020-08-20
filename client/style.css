@@ -472,7 +472,7 @@ table {
   position: relative;
   display: inline-block;
   height: 45px;
-  width: 120px;
+  width: 110px;
   border-color: #fff;
   border: .5px;
 }
@@ -524,9 +524,9 @@ table {
 
 .game_tooltip {
   position: absolute;
-  width: 306px;;
-  visibility: visible;
   width: 306px;
+  height: auto;
+  visibility: visible;
   color: #30455a;
   font-size: 12px;
   background: linear-gradient(to bottom, rgba(227,234,239,1) 0%,rgba(199,213,224,1) 100%);
