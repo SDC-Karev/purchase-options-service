@@ -19,21 +19,19 @@ class PurchaseOptions extends React.Component {
   }
 
   onBundleItemMouseEnter(game, bundleId, e) {
-    const context = e.currentTarget.getBoundingClientRect();
+    const context = e.currentTarget;
     const key = `${bundleId}_${game.game_id}`;
     this.addBundleItemToHoveredContent(game, key, context);
   }
 
   onBundleItemMouseExit(game, bundleId, e) {
-    const context = e.currentTarget.getBoundingClientRect();
+    const context = e.currentTarget;
     const key = `${bundleId}_${game.game_id}`;
     const { hoveredGames } = this.state;
     if (!hoveredGames.hasOwnProperty(key)) {
       hoveredGames[key] = game;
     }
     hoveredGames[key].style = {
-      left: context.left - context.width,
-      top: context.top,
       display: 'none',
     };
     this.setState({
@@ -46,9 +44,10 @@ class PurchaseOptions extends React.Component {
     if (!hoveredGames.hasOwnProperty(key)) {
       hoveredGames[key] = game;
     }
+    const c = context.getBoundingClientRect();
     hoveredGames[key].style = {
-      left: context.left - context.width * 2,
-      top: context.top,
+      left: c.left - (c.width / 3) * 2,
+      top: 610,
       display: 'block',
     };
     this.setState({
