@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '../../style.css';
+import styles from '../../style';
 
-import PurchaseGame from './PurchaseGame.jsx';
-import PurchaseBundle from './PurchaseBundle.jsx';
+import PurchaseGame from './PurchaseGame';
+import PurchaseBundle from './PurchaseBundle';
 
 const PurchaseOptionsBlock = ({
   game,

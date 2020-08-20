@@ -1,9 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import faker from 'faker';
 
-import styles from './style.css';
-import { PurchaseOptionsBlock, BundleItemTooltipBlock } from './components/index.jsx';
+import { PurchaseOptionsBlock, BundleItemTooltipBlock } from './components/index';
 
 class PurchaseOptions extends React.Component {
   constructor(props) {
@@ -34,11 +32,6 @@ class PurchaseOptions extends React.Component {
       hoveredGames[key] = game;
     }
     hoveredGames[key].style = {
-<<<<<<< Updated upstream
-      left: context.left + context.width,
-      top: context.top,
-=======
->>>>>>> Stashed changes
       display: 'none',
     };
     this.setState({
@@ -53,13 +46,8 @@ class PurchaseOptions extends React.Component {
     }
     const c = context.getBoundingClientRect();
     hoveredGames[key].style = {
-<<<<<<< Updated upstream
-      left: context.left + context.width,
-      top: context.top,
-=======
       left: c.left - (c.width / 3) * 2,
       top: 610,
->>>>>>> Stashed changes
       display: 'block',
     };
     this.setState({
@@ -68,19 +56,20 @@ class PurchaseOptions extends React.Component {
   }
 
   fetchGameData() {
-    const gameId = 11;
-    axios.get(`/api/gameById/${gameId}`)
+    const gameId = this.props.gameId;
+    axios.get(`http://localhost:3002/api/gameById/${gameId}`)
       .then((res) => {
         this.setState({
           game: res.data,
         });
       })
-      .then(() => axios.get(`/api/bundleByGameId/${gameId}`))
+      .then(() => axios.get(`http://localhost:3002/api/bundleByGameId/${gameId}`))
       .then((res) => {
         this.setState({
           bundles: res.data,
         });
-      });
+      })
+      .catch();
   }
 
   render() {

@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start-dev": "nodemon index.js",
+    "start:dev": "nodemon index.js",
     "build-dev": "webpack -d --watch",
+    "build": "webpack -d",
     "seed": "node -e \"require('./server/database/seed/seed.js').seedDatabase()\"",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -16,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/hrr47-FEC-Bailey/purchase-options.git"
   },
-  "author": "",
+  "author": "Tristan Smith",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hrr47-FEC-Bailey/purchase-options/issues"
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/hrr47-FEC-Bailey/purchase-options#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "mysql": "^2.18.1",

@@ -1,12 +1,19 @@
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
 const db = require('./database');
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, '/../public')));
 
-app.get('/api/gameById/:id', (req, res) => {
+app.get('/api/gameById/:id', cors(corsOptions), (req, res) => {
   const { id } = req.params;
   db.gameById(id)
     .then((data) => {
@@ -21,7 +28,7 @@ app.get('/api/gameById/:id', (req, res) => {
     });
 });
 
-app.get('/api/bundleByGameId/:gameId', (req, res) => {
+app.get('/api/bundleByGameId/:gameId', cors(corsOptions), (req, res) => {
   const { gameId } = req.params;
 
   db.bundleByGameId(gameId)
