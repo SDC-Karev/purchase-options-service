@@ -2,4 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PurchaseOptions from './PurchaseOptions';
 
-ReactDOM.render(<PurchaseOptions gameId={6} />, document.getElementById('purchase-options'));
+const paths = window.location.pathname.split('/');
+const gameId = paths[paths.length - 1];
+
+ReactDOM.render(<PurchaseOptions gameId={gameId} />, document.getElementById('purchase-options'));
