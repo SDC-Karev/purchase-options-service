@@ -25,6 +25,12 @@ app.get('/api/gameById/:id', (req, res) => {
     });
 });
 
+// new CRUD operations for  'api/gameById/:id' route
+app.post('/api/gameById/:id',);
+app.put('/api/gameById/:id',);
+app.delete('/api/gameById/:id',);
+
+
 app.get('/api/bundleByGameId/:gameId', (req, res) => {
   const { gameId } = req.params;
 
@@ -40,5 +46,10 @@ app.get('/api/bundleByGameId/:gameId', (req, res) => {
       res.status(500).send(errMessage);
     });
 });
+
+// new CRUD operations for  'api/bundleByGameId/:gameId' route
+app.post('/api/bundleByGameId/:gameId');
+app.put('/api/bundleByGameId/:gameId');
+app.delete('/api/bundleByGameId/:gameId');
 
 module.exports.app = app;
