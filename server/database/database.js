@@ -2,7 +2,6 @@ const mysql = require('mysql');
 
 require('dotenv').config();
 
-console.log(process.env.SQL_USER)
 const db = mysql.createPool({
   connectionLimit: 10,
   user: process.env.SQL_USER,

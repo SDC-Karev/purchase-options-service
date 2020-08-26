@@ -4,72 +4,32 @@ const {
   getBundleByGameID,
   getGamesFromBundleID,
   getPlatformsByGameId,
-  getPlatformsByBundleId,
 } = require('./queries.js');
 
-const gameById = (id) => {
-  let gameData;
-  return getGameById(id)
-    .then((game) => {
-      [gameData] = game;
-      return getTagsByGameId(id);
-    })
-    .then((tags) => {
-      if (gameData) {
-        gameData.tags = tags;
-      }
-      return getPlatformsByGameId(id);
-    })
-    .then((platforms) => {
-      if (gameData) {
-        gameData.platforms = platforms;
-      }
-      return Promise.resolve(gameData);
-    });
+const gameById = async (id) => {
+  const [gameData] = await getGameById(id);
+  gameData.tags = await getTagsByGameId(id);
+  gameData.platforms = await getPlatformsByGameId(id);
+  return gameData;
 };
 
-const bundleByGameId = (id) => (
-  getBundleByGameID(id) // get bundle data
-    .then((bundlesResp) => {
-      const data = bundlesResp.map((bundle) => {
-        const b = bundle;
-        return getGamesFromBundleID(bundle.bundle_id)
-          .then((gamesBundleResp) => {
-            b.games = gamesBundleResp;
-            return getPlatformsByGameId(bundle.bundle_id);
-          })
-          .then((platforms) => {
-            b.platforms = platforms;
-            return Promise.resolve(b);
-          });
-      });
-      return Promise.all(data);
-    })
-    .then((bundles) => {
-      const bs = bundles.map((bundle) => {
-        const games = bundle.games.map((game) => {
-          const g = game;
-          return getTagsByGameId(g.game_id)
-            .then((tags) => {
-              g.tags = tags;
-              return getPlatformsByGameId(g.game_id);
-            })
-            .then((platforms) => {
-              g.platforms = platforms;
-              return Promise.resolve(g);
-            });
-          });
-        const b = bundle;
-        return Promise.all(games)
-          .then((gamesResult) => {
-            b.games = gamesResult;
-            return Promise.resolve(b);
-          });
-      });
-      return Promise.all(bs);
-    })
-    .then((finalData) => Promise.resolve(JSON.parse(JSON.stringify(finalData))))
-);
+const bundleByGameId = async (id) => {
+  let bundles = await getBundleByGameID(id);
+  let games;
+  bundles = bundles.map(async (bundle) => {
+    games = await getGamesFromBundleID(bundle.bundle_id);
+    games = games.map(async (game) => {
+      game.tags = await getTagsByGameId(game.game_id);
+      game.platforms = await getTagsByGameId(game.game_id);
+      return game;
+    });
+    bundle.games = await Promise.all(games);
+    bundle.platforms = await getPlatformsByGameId(bundle.bundle_id);
+    return bundle;
+  });
+
+  return Promise.all(bundles);
+};
 
 module.exports = {
   bundleByGameId,
