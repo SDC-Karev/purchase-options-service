@@ -12,10 +12,13 @@ const db = mysql.createPool({
 const query = (queryString, queryArgs) => (
   new Promise((resolve, reject) => {
     db.query(queryString, queryArgs, (err, result) => {
-      if (err) {
-        reject(err.message);
-      }
+      if (err !== null) {
+        console.log('database reject called');
+        reject(err);
+      } else {
+      console.log(result);
       resolve(result);
+      }
     });
   })
 );
