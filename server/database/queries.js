@@ -12,6 +12,42 @@ const getGameById = (id) => {
   return db.query(q, [id]);
 };
 
+const updateGame = (queryParams) => {
+  const q = `UPDATE games g
+            SET g.game_name = ?,
+              g.game_price = ?,
+              g.game_banner = ?,
+              g.game_release_date = ?,
+              g.dev_id = ?,
+              g.sale_id = ?
+            WHERE g.game_id = ?;`;
+
+  return db.query(q, queryParams);
+};
+
+const postGame = (queryParams) => {
+  console.log(queryParams);
+  const q = `INSERT INTO games (
+            game_name,
+            game_price,
+            game_banner,
+            game_release_date,
+            dev_id,
+            sale_id
+            )
+            VALUES (?, ?, ?, ?, ?, ?);`;
+
+  return db.query(q, queryParams);
+};
+
+const deleteGame = (id) => {
+  const q = `DELETE FROM games
+            WHERE game_id = ?;`;
+
+  return db.query(q, [id]);
+}
+
+
 const getBundleByGameID = (id) => {
   const q = `SELECT b.bundle_id, b.bundle_name, b.bundle_price, s.sale_amount
             FROM bundles b
@@ -22,6 +58,13 @@ const getBundleByGameID = (id) => {
             WHERE gb.game_id = ?;`;
 
   return db.query(q, [id]);
+};
+
+const postBundle = (queryParams) => {
+  console.log('db query params: ', queryParams);
+  const q = `INSERT INTO bundles (bundle_name, bundle_price, sale_id) VALUES (?, ?, ?);`;
+
+  return db.query(q, queryParams);
 };
 
 const getGamesFromBundleID = (id) => {
@@ -46,6 +89,7 @@ const getTagsByGameId = (id) => {
   return db.query(q, [id]);
 };
 
+
 const getPlatformsByGameId = (id) => {
   const q = `SELECT p.platform_name, p.platform_icon
             FROM platforms p
@@ -66,6 +110,36 @@ const getPlatformsByBundleId = (id) => {
   return db.query(q, [id]);
 };
 
+const createGamesBundlesRow = (queryParams) => {
+  const q = `INSERT INTO games_bundles (
+              game_id,
+              bundle_id
+            )
+            VALUES (?, ?);`;
+  return db.query(q, queryParams);
+};
+
+const updateBundle = (queryParams) => {
+  const q = `UPDATE bundles SET
+            bundle_name = ?,
+            bundle_price = ?,
+            sale_id = ?
+            WHERE bundle_id = ?;
+  `;
+
+  return db.query(q, queryParams);
+};
+
+const deleteBundle = (queryParams) => {
+  const q = `DELETE FROM bundles WHERE bundle_id = ?;`;
+  return db.query(q, queryParams);
+}
+
+const getBundle = (queryParams) => {
+  const q = `SELECT * FROM bundles WHERE bundle_id = ?`;
+  return db.query(q, queryParams);
+}
+
 module.exports = {
   getTagsByGameId,
   getGamesFromBundleID,
@@ -73,4 +147,12 @@ module.exports = {
   getGameById,
   getPlatformsByGameId,
   getPlatformsByBundleId,
+  updateGame,
+  postGame,
+  deleteGame,
+  postBundle,
+  createGamesBundlesRow,
+  updateBundle,
+  deleteBundle,
+  getBundle
 };
