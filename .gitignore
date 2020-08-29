@@ -106,3 +106,8 @@ dist
 # Ignore Compressed React
 public/bundle.js
 server/database/config.js
+
+.DS_Store
+
+# Ignore csv data files
+server/database/csv_data/
