@@ -63,7 +63,7 @@ class PurchaseOptions extends React.Component {
           game: res.data,
         });
       })
-      .then(() => axios.get(`http://localhost:3002/api/bundleByGameId/${gameId}`))
+      .then(() => axios.get(`http://localhost:3002/api/bundlesByGameId/${gameId}`))
       .then((res) => {
         this.setState({
           bundles: res.data,

@@ -450,25 +450,135 @@ const generateTagsGamesJoin = () => {
   generateAndWrite();
 };
 
-(() => {
-  generateGames(() => {
-    generateDevelopers(() => {
-      generateBundles(() => {
-        generatePlatforms(() => {
-          generateSales(() => {
-            generateTags(() => {
-              generateBundlesPlatformsJoin(() => {
-                generateGamesBundlesJoin(() => {
-                  generateGamesPlatformsJoin(generateTagsGamesJoin);
-                });
-              });
-            });
-          });
+const generateGamesByGameId = (callback) => {
+  console.log('Writing Games');
+  let i = 1; // go to 10000000
+
+  const wStream = fs.createWriteStream('./server/database/csv_data/game_3.csv', { flags: 'a' });
+  // wStream.write('game_id,game_name,game_price,game_banner,game_release_date,dev_id,sale_id\n', (err) => {
+  //   if (err) throw err;
+  // });
+
+  const generateAndWrite = () => {
+    let ok;
+    const platforms = {
+      1: { platform_name: 'Mac', platform_icon: faker.image.imageUrl() },
+      2: { platform_name: 'Windows', platform_icon: faker.image.imageUrl() },
+      3: { platform_name: 'Steam + Linux', platform_icon: faker.image.imageUrl() },
+    };
+
+    const tags = {
+      1: { tag_name: 'fun', tag_icon: faker.image.imageUrl() },
+      2: { tag_name: 'riveting', tag_icon: faker.image.imageUrl() },
+      3: { tag_name: 'for kids', tag_icon: faker.image.imageUrl() },
+      4: { tag_name: 'for adults', tag_icon: faker.image.imageUrl() },
+      5: { tag_name: 'mystery', tag_icon: faker.image.imageUrl() },
+      6: { tag_name: 'addicting', tag_icon: faker.image.imageUrl() },
+      7: { tag_name: 'hot', tag_icon: faker.image.imageUrl() },
+      8: { tag_name: 'in demand', tag_icon: faker.image.imageUrl() },
+      9: { tag_name: 'exclusive', tag_icon: faker.image.imageUrl() },
+      10: { tag_name: 'wonderful', tag_icon: faker.image.imageUrl() },
+      11: { tag_name: 'engaging', tag_icon: faker.image.imageUrl() },
+      12: { tag_name: 'family', tag_icon: faker.image.imageUrl() },
+      13: { tag_name: 'favorite', tag_icon: faker.image.imageUrl() },
+      14: { tag_name: 'on sale', tag_icon: faker.image.imageUrl() },
+      15: { tag_name: 'limited time only', tag_icon: faker.image.imageUrl() },
+      16: { tag_name: 'mysterious', tag_icon: faker.image.imageUrl() },
+      17: { tag_name: 'amazing', tag_icon: faker.image.imageUrl() },
+      18: { tag_name: 'first person', tag_icon: faker.image.imageUrl() },
+      19: { tag_name: 'platformer', tag_icon: faker.image.imageUrl() },
+      20: { tag_name: 'puzzle', tag_icon: faker.image.imageUrl() },
+    };
+
+    do {
+      const data = {};
+      const platformsPicked = {};
+      const tagsPicked = {};
+      data.platforms = [];
+      data.tags = [];
+      for (let j = 1; j <= 3; j += 1) {
+        const randomIndex = Math.floor(Math.random() * 3) + 1;
+        if (platformsPicked[randomIndex] === undefined) {
+          platformsPicked[randomIndex] = 1;
+          data.platforms.push(
+            {
+              platform_id: randomIndex,
+              platform_name: platforms[randomIndex].platform_name,
+              platform_icon: platforms[randomIndex].platform_icon,
+            },
+          );
+        }
+      }
+
+      for (let j = 1; j <= 20; j += 1) {
+        const randomIndex = Math.floor(Math.random() * 20) + 1;
+        if (tagsPicked[randomIndex] === undefined) {
+          tagsPicked[randomIndex] = 1;
+          data.tags.push(
+            {
+              tag_id: randomIndex,
+              tag_name: tags[randomIndex].tag_name,
+              tag_icon: tags[randomIndex].tag_icon,
+            },
+          );
+        }
+      }
+
+      data.game_name = faker.lorem.word();
+      data.game_price = faker.finance.amount();
+      data.game_banner = faker.image.imageUrl();
+      data.game_release_date = new Date(faker.date.past());
+      data.game_dev_name = faker.lorem.word();
+      data.game_sale_amount = faker.finance.amount() * -1;
+
+      if (i === 1000) {
+        wStream.write(`${i}|${data.game_name}|${data.game_price}|${data.game_banner}|${data.game_release_date.getFullYear()}-${data.game_release_date.getMonth() + 1}-${data.game_release_date.getDate()}|${data.game_dev_name}|${data.game_sale_amount}|${JSON.stringify(data.platforms)}|${JSON.stringify(data.tags)}\n`, (err) => {
+          if (err) throw err;
+          wStream.end();
         });
-      });
-    });
-  });
-})();
+      } else {
+        if (i % 500000 === 0) {
+          console.log(i);
+          console.log(data.platforms);
+        }
+        ok = wStream.write(`${i}|${data.game_name}|${data.game_price}|${data.game_banner}|${data.game_release_date.getFullYear()}-${data.game_release_date.getMonth() + 1}-${data.game_release_date.getDate()}|${data.game_dev_name}|${data.game_sale_amount}|${JSON.stringify(data.platforms)}|${JSON.stringify(data.tags)}\n`, (err) => {
+          if (err) throw err;
+        });
+      }
+      i += 1;
+    } while (i <= 1000 && ok);
+
+    if (i <= 1000) {
+      wStream.once('drain', generateAndWrite);
+    } else {
+      callback();
+    }
+  };
+  generateAndWrite();
+};
+
+generateGamesByGameId(() => console.log('finished writing'));
+
+
+// (() => {
+//   generateGames(() => {
+//     generateDevelopers(() => {
+//       generateBundles(() => {
+//         generatePlatforms(() => {
+//           generateSales(() => {
+//             generateTags(() => {
+//               generateBundlesPlatformsJoin(() => {
+//                 generateGamesBundlesJoin(() => {
+//                   generateGamesPlatformsJoin(generateTagsGamesJoin);
+//                 });
+//               });
+//             });
+//           });
+//         });
+//       });
+//     });
+//   });
+// })();
 
 module.exports = {
   generateTagsGamesJoin,
