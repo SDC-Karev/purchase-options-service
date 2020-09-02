@@ -9,11 +9,9 @@ const client = new Client({
 });
 client.connect();
 
-exports.query = (queryString, queryParams, callback) => {
-  client.query(queryString, queryParams, (err, res) => {
-    callback(err, res);
-  });
-};
+exports.query = (queryString, queryParams) => client.query(queryString, queryParams);
+
+
 
 exports.gameQueryString = `SELECT
                             json_build_object(
@@ -59,16 +57,17 @@ exports.bundlesQueryString = `
                                       'bundle_id', b.bundle_id,
                                       'bundle_name', b.bundle_name,
                                       'bundle_price', b.bundle_price,
-                                      'sale_amount', s.sale_amount,
+                                      'sale_amount', s.sale_amount
                                     )
                                   )
-                                  FROM bundles b, cte, sales s, games_bundles gb
-                                  WHERE gb.game_id = cte.game_id
+                                  FROM bundles b, sales s, games_bundles gb
+                                  WHERE gb.game_id = $1
                                   AND gb.bundle_id = b.bundle_id
                                   AND b.sale_id = s.sale_id;`;
 
 exports.gamesByBundleIdQueryString = `SELECT
-                                        json_build_object(
+                                        json_agg(
+                                          json_build_object(
                                             'game_id', g.game_id,
                                             'game_name', g.game_name,
                                             'game_price', g.game_price,
@@ -100,6 +99,7 @@ exports.gamesByBundleIdQueryString = `SELECT
                                                       WHERE tg.tag_id = t.tag_id
                                                       AND tg.game_id = g.game_id
                                                     )
+                                        )
                                         )
                                         FROM games g, developers d, sales s, games_bundles gb
                                         WHERE gb.bundle_id = $1

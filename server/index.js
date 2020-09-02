@@ -23,15 +23,43 @@ app.get('/api/gameById/:gameId', (req, res) => {
 });
 
 app.get('/api/bundlesByGameId/:gameId', (req, res) => {
-  db.query(db.bundlesQueryString, [req.params.gameId], (err, bundles) => {
-    if (err) {
-      res.status(502).send(err.message);
-    } else {
-      res.status(200).json(bundles.rows[0].json_agg);
-    }
-  })
+  db.query(db.bundlesQueryString, [req.params.gameId])
+    .then((result) => {
+      // console.log(result);
+      const bundles = result.rows[0].json_agg;
+      const bundlePromises = [];
+      for (let i = 0; i < bundles.length; i++) {
+        bundlePromises.push(db.query(db.gamesByBundleIdQueryString, [bundles[i].bundle_id]));
+      }
+      Promise.all(bundlePromises)
+        .then((results) => {
+          console.log(results);
+          for (let i = 0; i < bundles.length; i++) {
+            bundles[i].games = results[i].rows[0].json_agg;
+          }
+          return bundles;
+        })
+        .then((results) => {
+          res.status(200).json(results);
+        })
+        .catch((err) => res.status(502).send(err.message));
+    })
+    .catch((err) => res.status(502).send(err.message));
 });
+//   db.query(db.bundlesQueryString, [req.params.gameId], (err, bundles) => {
+//     if (err) {
+//       res.status(502).send(err.message);
+//     } else {
+//       bundles.rows.forEach((bundle) => {
+//         db.query(db.gamesByBundleIdQueryString, )
+//       });
 
+
+
+//       res.status(200).json(bundles.rows[0].json_agg);
+//     }
+//   });
+// });
 
 
 
