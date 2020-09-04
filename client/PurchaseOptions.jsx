@@ -57,6 +57,7 @@ class PurchaseOptions extends React.Component {
 
   fetchGameData() {
     const gameId = this.props.gameId;
+    console.log(gameId);
     axios.get(`http://localhost:3002/api/gameById/${gameId}`)
       .then((res) => {
         this.setState({
