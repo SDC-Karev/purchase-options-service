@@ -1,12 +1,15 @@
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const db = require('./database/db.js');
 
 const app = express();
 const port = 3002;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '../public/')));
 app.use('/games/:gameId', express.static(path.resolve(__dirname, '../public/')));
@@ -23,6 +26,7 @@ app.get('/api/gameById/:gameId', (req, res) => {
 });
 
 app.get('/api/bundlesByGameId/:gameId', (req, res) => {
+  console.log(req.params.gameId);
   db.query(db.bundlesQueryString, [req.params.gameId])
     .then((result) => {
       // console.log(result);
