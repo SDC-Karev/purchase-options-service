@@ -57,13 +57,14 @@ class PurchaseOptions extends React.Component {
 
   fetchGameData() {
     const gameId = this.props.gameId;
+    console.log(gameId);
     axios.get(`http://localhost:3002/api/gameById/${gameId}`)
       .then((res) => {
         this.setState({
           game: res.data,
         });
       })
-      .then(() => axios.get(`http://localhost:3002/api/bundleByGameId/${gameId}`))
+      .then(() => axios.get(`http://localhost:3002/api/bundlesByGameId/${gameId}`))
       .then((res) => {
         this.setState({
           bundles: res.data,

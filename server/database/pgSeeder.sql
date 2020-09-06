@@ -1,122 +1,67 @@
+-- CREATE MAIN TABLES
+
 CREATE TABLE games (
-  game_id             int,
-  game_name           varchar(255),
-  game_price          float,
-  game_banner         varchar(255),
-  game_release_date   date,
-  dev_id              int,
-  sale_id             int
+  game_id             SERIAL,
+  game_name           varchar(255) NOT NULL,
+  game_price          float NOT NULL,
+  game_banner         varchar(255) NOT NULL,
+  game_release_date   date NOT NULL,
+  dev_name              varchar(60) NOT NULL,
+  sale_amount             float DEFAULT null,
+  platforms           jsonb NOT NULL DEFAULT '[]'::jsonb,
+  tags                jsonb NOT NULL DEFAULT '[]'::jsonb
+
 );
-\copy games FROM './csv_data/games.csv' DELIMITER ',' CSV;
--- COPY games FROM './csv_data/games.csv' WITH (FORMAT csv);
+\copy games FROM './csv_data/games.csv' QUOTE '^' DELIMITER '|' CSV;
+
 
 CREATE TABLE bundles (
-  bundle_id           int,
-  bundle_name         varchar(255),
-  bundle_price        float,
-  sale_id             int
+  bundle_id           SERIAL,
+  bundle_name         varchar(255) NOT NULL,
+  bundle_price        float NOT NULL,
+  sale_amount             float DEFAULT null,
+  platforms           jsonb NOT NULL DEFAULT '[]'::jsonb
 );
-\copy bundles FROM './csv_data/bundles.csv' DELIMITER ',' CSV;
-
-
-CREATE TABLE developers (
-  dev_id              int,
-  dev_name            varchar(255),
-  dev_found_date      date
-);
-\copy developers FROM './csv_data/developers.csv' DELIMITER ',' CSV;
-
-CREATE TABLE platforms (
-  platform_id         int,
-  platform_name       varchar(255),
-  platform_class      varchar(60),
-  platform_icon       varchar(255)
-);
-\copy platforms FROM './csv_data/platforms.csv' DELIMITER ',' CSV;
-
-CREATE TABLE sales (
-  sale_id             int,
-  sale_name           varchar(255),
-  sale_amount         float,
-  sale_start_date     date,
-  sale_end_date       date
-);
-\copy sales FROM './csv_data/sales.csv' DELIMITER ',' CSV;
-
-CREATE TABLE tags (
-  tag_id              int,
-  tag_name            varchar(255),
-  tag_icon            varchar(255)
-);
-\copy tags FROM './csv_data/tags.csv' DELIMITER ',' CSV;
-
-CREATE TABLE temp_b_p (
-  bundle_id           int,
-  platform_id         int
-);
-\copy temp_b_p FROM './csv_data/bundles_platforms.csv' DELIMITER ',' CSV;
-
-CREATE TABLE bundles_platforms (
-  bundle_id           int,
-  platform_id         int
-);
-
-INSERT INTO bundles_platforms
-SELECT *
-FROM temp_b_p
-ON CONFLICT DO NOTHING;
-
-
-
-CREATE TABLE temp_g_b (
-  game_id             int,
-  bundle_id           int
-);
-\copy temp_g_b FROM './csv_data/games_bundles.csv' DELIMITER ',' CSV;
+\copy bundles FROM './csv_data/bundles.csv' QUOTE '^' DELIMITER '|' CSV;
 
 
 CREATE TABLE games_bundles (
   game_id             int,
   bundle_id           int
 );
-
-INSERT INTO games_bundles
-SELECT *
-FROM temp_g_b
-ON CONFLICT DO NOTHING;
+\copy games_bundles FROM './csv_data/games_bundles.csv' DELIMITER ',' CSV;
 
 
-CREATE TABLE temp_g_p (
-  game_id             int,
-  platform_id         int
-);
-\copy temp_g_p FROM './csv_data/games_platforms.csv' DELIMITER ',' CSV;
 
 
-CREATE TABLE games_platforms (
-  game_id             int,
-  platform_id         int
-);
+-- ADD PRIMARY KEY CONSTRAINTS TO MAIN TABLES
 
-INSERT INTO games_platforms
-SELECT *
-FROM temp_g_p
-ON CONFLICT DO NOTHING;
+ALTER TABLE games ADD PRIMARY KEY (game_id);
+ALTER TABLE bundles ADD PRIMARY KEY (bundle_id);
 
-CREATE TABLE temp_t_g (
-  tag_id              int,
-  game_id             int
-);
-\copy temp_t_g FROM './csv_data/tags_games.csv' DELIMITER ',' CSV;
 
-CREATE TABLE tags_games (
-  tag_id              int,
-  game_id             int
-);
+-- DELETE DUPLICATE ENTRIES
 
-INSERT INTO tags_games
-SELECT *
-FROM temp_t_g
-ON CONFLICT DO NOTHING;
+DELETE FROM games_bundles a
+USING games_bundles b
+WHERE a.ctid < b.ctid
+AND a.game_id = b.game_id
+AND a.bundle_id = b.bundle_id;
 
-DROP TABLE temp_b_p, temp_g_b, temp_g_p, temp_t_g;
+-- add primary key constraints to join tables
+ALTER TABLE games_bundles ADD PRIMARY KEY (game_id, bundle_id);
+
+-- add foreign key constraints to join tables
+
+ALTER TABLE games_bundles ADD CONSTRAINT fk_gb_link_games FOREIGN KEY (game_id) REFERENCES games;
+ALTER TABLE games_bundles ADD CONSTRAINT fk_gb_link_bundles FOREIGN KEY (bundle_id) REFERENCES bundles;
+
+CREATE UNIQUE INDEX games_index ON games (game_id);
+CREATE UNIQUE INDEX bundles_index ON bundles (bundle_id);
+CREATE UNIQUE INDEX games_bundles_index on games_bundles (bundle_id, game_id);
+
+
+--CREATE USER gamer WITH PASSWORD 'halomarine';
+--GRANT ALL PRIVILEGES ON DATABASE 'purchaseOptions' TO USER gamer;
+GRANT ALL PRIVILEGES ON TABLE games, bundles, games_bundles TO gamer;
+
