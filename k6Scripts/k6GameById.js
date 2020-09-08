@@ -3,7 +3,10 @@ import { sleep } from 'k6';
 
 export const options = {
   vus: 1000,
-  duration: '150s',
+  stages: [
+    { duration: '30s', target: 100 },
+    { duration: '2m30s', target: 1000 },
+  ],
 };
 
 export default function() {
@@ -20,18 +23,10 @@ export default function() {
     return [2000000, 8000000];
   };
   const [numberOptions, lowerBound] = applyWeight();
-	const randomIds = [];
-	for (let i = 0; i < 10; i += 1) {
-		randomIds.push(Math.floor(Math.random() * numberOptions) + lowerBound);
+  const randomId = Math.floor(Math.random() * numberOptions) + lowerBound;
+  const randomId2 = Math.floor(Math.random() * numberOptions) + lowerBound;
 
-	}
-
-	for (let j = 0; j < 10; j += 1) {
-			http.get(`http://localhost:3002/api/gameById/${randomIds[j]}`, {
-				tags: { name: 'gameById' },
-			});
-			http.get(`http://localhost:3002/api/bundlesByGameId/${randomIds[j]}`, {
-				tags: { name: 'bundlesByGameId' },
-			});
-	}
+  http.get(`http://localhost:3002/api/gameById/${randomId}`, {
+    tags: { name: 'gameById' },
+  });
 }

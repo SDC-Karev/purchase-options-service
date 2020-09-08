@@ -111,3 +111,5 @@ server/database/config.js
 
 # Ignore csv data files
 server/database/csv_data/
+
+newrelic.js
