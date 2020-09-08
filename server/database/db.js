@@ -3,7 +3,7 @@ const { Client, Pool } = require('pg');
 const client = new Pool({
   user: 'gamer',
   host: 'localhost',
-  database: 'purchase-options',
+  database: 'purchaseOptions',
   password: 'halomarine',
   port: 5433,
 });
@@ -11,6 +11,9 @@ const client = new Pool({
 client.connect();
 
 exports.query = (queryString, queryParams) => client.query(queryString, queryParams);
+
+exports.postGameQueryString = `INSERT INTO games (game_id, game_name, game_price, game_banner, game_release_date, dev_name, sale_amount, platforms, tags)
+                              VALUES (default, $1, $2, $3, $4, $5, $6, $7, $8);`;
 
 exports.gameQueryString = `SELECT
 json_build_object(

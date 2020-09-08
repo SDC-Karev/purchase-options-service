@@ -61,7 +61,9 @@ CREATE UNIQUE INDEX bundles_index ON bundles (bundle_id);
 CREATE UNIQUE INDEX games_bundles_index on games_bundles (bundle_id, game_id);
 
 
---CREATE USER gamer WITH PASSWORD 'halomarine';
---GRANT ALL PRIVILEGES ON DATABASE 'purchaseOptions' TO USER gamer;
+CREATE USER gamer WITH PASSWORD 'halomarine';
+GRANT ALL PRIVILEGES ON DATABASE 'purchase-options' TO USER gamer;
 GRANT ALL PRIVILEGES ON TABLE games, bundles, games_bundles TO gamer;
+select setval('games_game_id_seq', (select max(game_id) from games));
+grant all privileges on sequence games_game_id_seq to gamer;
 
