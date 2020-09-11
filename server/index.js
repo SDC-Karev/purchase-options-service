@@ -49,7 +49,7 @@ app.get('/api/bundlesByGameId/:gameId', (req, res) => {
         })
         .catch((err) => res.status(502).send(err.message));
     })
-    .catch((err) => res.status(502).send(err.message));
+    .catch(() => res.status(200).json([]));
 });
 
 app.post('/api/games', (req, res) => {
