@@ -1,13 +1,13 @@
 # Purchase Options
 
-> A Purchase Options component for our Front End Design of Steam
+> A service to handle the purchase options for games and bundles on our app Arcadia
 
 ## Related Projects
 
-  - https://github.com/hrr47-FEC-Bailey/media-window
-  - https://github.com/hrr47-FEC-Bailey/reviews
-  - https://github.com/hrr47-FEC-Bailey/similar-games
-  - httos://github.com/hrr47-FEC-Bailey/game-sidebar
+  - https://github.com/SDC-karev/media-window
+  - https://github.com/SDC-karev/reviews
+  - https://github.com/SDC-karev/similar-games
+  - httos://github.com/SDC-karev/game-sidebar
 
 ## Table of Contents
 
@@ -23,17 +23,23 @@
 
 ## CRUD API Endpoints
 
-Games:
+### Games:
 
 
-GET --> '/api/gameById/:id' : GET GAME BY GAME ID
+#### GET
+`/api/gameById/:id` 
+> GET GAME BY GAME ID
 
 
-POST --> '/api/games/' : POST NEW GAME, INCLUDE FOLLOWING FIELDS IN REQ.BODY as JSON: game_name(varchar), game_price(int), game_banner(varchar), game_release_date('YYYY-MM-DD'), dev_name(varchar), sale_amount(float), platforms (json) { platform_name: varchar, platform_icon: varchar, platform }, tags (json) {tag_name: varchar, tag_icon: varchar}
+#### POST
+`/api/games/` 
+> POST NEW GAME, INCLUDE FOLLOWING FIELDS IN REQ.BODY as JSON: game_name(varchar), game_price(int), game_banner(varchar), game_release_date('YYYY-MM-DD'), dev_name(varchar), sale_amount(float), platforms (json) { platform_name: varchar, platform_icon: varchar, platform }, tags (json) {tag_name: varchar, tag_icon: varchar}
 
-Bundles:
+### Bundles:
 
-GET --> '/api/bundleByGameId/:game_id' : GET ALL BUNDLES ASSOCIATED WITH THIS GAME
+#### GET
+`/api/bundleByGameId/:game_id`
+GET ALL BUNDLES ASSOCIATED WITH THIS GAME
 
 
 ## Requirements
