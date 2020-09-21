@@ -7,7 +7,6 @@
   - https://github.com/SDC-karev/media-window
   - https://github.com/SDC-karev/reviews
   - https://github.com/SDC-karev/similar-games
-  - httos://github.com/SDC-karev/game-sidebar
 
 ## Table of Contents
 
@@ -39,7 +38,7 @@
 
 #### GET
 `/api/bundleByGameId/:game_id`
-GET ALL BUNDLES ASSOCIATED WITH THIS GAME
+> GET ALL BUNDLES ASSOCIATED WITH THIS GAME
 
 
 ## Requirements
